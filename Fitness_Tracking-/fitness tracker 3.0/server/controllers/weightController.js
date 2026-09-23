@@ -79,15 +79,9 @@ const addWeightRecord = async (req, res) => {
     if (profile && profile.height) {
       const heightMeters = profile.height / 100;
       const bmi = parseFloat((Number(weight) / (heightMeters * heightMeters)).toFixed(1));
-<<<<<<< Updated upstream
       let bmiCategory = 'Normal';
       if (bmi < 18.5) bmiCategory = 'Underweight';
       else if (bmi >= 18.5 && bmi <= 24.9) bmiCategory = 'Normal';
-=======
-      let bmiCategory = 'Healthy';
-      if (bmi < 18.5) bmiCategory = 'Underweight';
-      else if (bmi >= 18.5 && bmi <= 24.9) bmiCategory = 'Healthy';
->>>>>>> Stashed changes
       else if (bmi >= 25 && bmi <= 29.9) bmiCategory = 'Overweight';
       else if (bmi >= 30) bmiCategory = 'Obese';
 
