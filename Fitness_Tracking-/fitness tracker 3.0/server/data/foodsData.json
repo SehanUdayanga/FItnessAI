@@ -1,0 +1,502 @@
+[
+  {
+    "name": "White Rice",
+    "caloriesPer100g": 137.5
+  },
+  {
+    "name": "Brown Rice",
+    "caloriesPer100g": 112.5
+  },
+  {
+    "name": "Red Rice",
+    "caloriesPer100g": 140
+  },
+  {
+    "name": "White Bread",
+    "caloriesPer100g": 270
+  },
+  {
+    "name": "Pasta",
+    "caloriesPer100g": 157.2
+  },
+  {
+    "name": "Roast Paan",
+    "caloriesPer100g": 280
+  },
+  {
+    "name": "Thati Paan",
+    "caloriesPer100g": 250
+  },
+  {
+    "name": "Coconut Roti",
+    "caloriesPer100g": 284
+  },
+  {
+    "name": "White Noodles",
+    "caloriesPer100g": 140
+  },
+  {
+    "name": "Idiyappam",
+    "caloriesPer100g": 180
+  },
+  {
+    "name": "Hoppers",
+    "caloriesPer100g": 400
+  },
+  {
+    "name": "Kiribath",
+    "caloriesPer100g": 150
+  },
+  {
+    "name": "Lunu Miris",
+    "caloriesPer100g": 120
+  },
+  {
+    "name": "Boiled Cowpea",
+    "caloriesPer100g": 116
+  },
+  {
+    "name": "Coconut Sambal",
+    "caloriesPer100g": 314
+  },
+  {
+    "name": "Papadam",
+    "caloriesPer100g": 300
+  },
+  {
+    "name": "Egg",
+    "caloriesPer100g": 148.94
+  },
+  {
+    "name": "Dhal Curry with coconut milk",
+    "caloriesPer100g": 160
+  },
+  {
+    "name": "Dhal Curry",
+    "caloriesPer100g": 100
+  },
+  {
+    "name": "Yellow Rice",
+    "caloriesPer100g": 312.67
+  },
+  {
+    "name": "Fried Halmesso",
+    "caloriesPer100g": 500
+  },
+  {
+    "name": "Fried Karawala",
+    "caloriesPer100g": 566.67
+  },
+  {
+    "name": "Kola Mallum",
+    "caloriesPer100g": 160
+  },
+  {
+    "name": "Cucumber Salad",
+    "caloriesPer100g": 35
+  },
+  {
+    "name": "Vegetable curry with coconut milk",
+    "caloriesPer100g": 120
+  },
+  {
+    "name": "Vegetable curry with coconut oil",
+    "caloriesPer100g": 80
+  },
+  {
+    "name": "Kiri Hodi",
+    "caloriesPer100g": 100
+  },
+  {
+    "name": "Beetroot curry with coconut milk",
+    "caloriesPer100g": 89
+  },
+  {
+    "name": "Soya meat curry with coconut milk",
+    "caloriesPer100g": 110
+  },
+  {
+    "name": "Soya meat curry",
+    "caloriesPer100g": 84
+  },
+  {
+    "name": "Boiled Potatoes",
+    "caloriesPer100g": 88
+  },
+  {
+    "name": "Chicken Curry",
+    "caloriesPer100g": 180
+  },
+  {
+    "name": "Chicken Gravy",
+    "caloriesPer100g": 50
+  },
+  {
+    "name": "Vegetable Soup",
+    "caloriesPer100g": 30
+  },
+  {
+    "name": "Egg Yolk",
+    "caloriesPer100g": 325
+  },
+  {
+    "name": "Mango Chutney",
+    "caloriesPer100g": 60
+  },
+  {
+    "name": "Mango Chutney with Sugar",
+    "caloriesPer100g": 200
+  },
+  {
+    "name": "Boiled Jackfruit Seed",
+    "caloriesPer100g": 260
+  },
+  {
+    "name": "Boiled Chickpeas",
+    "caloriesPer100g": 164
+  },
+  {
+    "name": "Boiled Mung",
+    "caloriesPer100g": 105
+  },
+  {
+    "name": "Boiled Sweet Potato",
+    "caloriesPer100g": 90
+  },
+  {
+    "name": "Cucumber Flesh",
+    "caloriesPer100g": 12
+  },
+  {
+    "name": "Tomato sauce",
+    "caloriesPer100g": 164
+  },
+  {
+    "name": "White sugar",
+    "caloriesPer100g": 400
+  },
+  {
+    "name": "Coconut Milk 1st 2nd 3rd extractions",
+    "caloriesPer100g": 150
+  },
+  {
+    "name": "Coconut Milk 1st 2nd extractions",
+    "caloriesPer100g": 200
+  },
+  {
+    "name": "Coconut Milk 1st extraction",
+    "caloriesPer100g": 300
+  },
+  {
+    "name": "Roast Peanut",
+    "caloriesPer100g": 600
+  },
+  {
+    "name": "Roast Green Pea",
+    "caloriesPer100g": 380
+  },
+  {
+    "name": "Roasted Gram",
+    "caloriesPer100g": 400
+  },
+  {
+    "name": "Orange",
+    "caloriesPer100g": 47.69
+  },
+  {
+    "name": "Guava",
+    "caloriesPer100g": 74
+  },
+  {
+    "name": "Kurumba",
+    "caloriesPer100g": 11.54
+  },
+  {
+    "name": "Ambun Kesel",
+    "caloriesPer100g": 90
+  },
+  {
+    "name": "Banana",
+    "caloriesPer100g": 90
+  },
+  {
+    "name": "Ambul Kesel",
+    "caloriesPer100g": 90
+  },
+  {
+    "name": "Cavendish Banana",
+    "caloriesPer100g": 89.33
+  },
+  {
+    "name": "Raisins",
+    "caloriesPer100g": 299
+  },
+  {
+    "name": "Jackfruit",
+    "caloriesPer100g": 94.29
+  },
+  {
+    "name": "Avocado",
+    "caloriesPer100g": 160
+  },
+  {
+    "name": "Watermelon",
+    "caloriesPer100g": 30
+  },
+  {
+    "name": "Dodol",
+    "caloriesPer100g": 380
+  },
+  {
+    "name": "Mun Kawum",
+    "caloriesPer100g": 450
+  },
+  {
+    "name": "Aluwa",
+    "caloriesPer100g": 400
+  },
+  {
+    "name": "Helapa",
+    "caloriesPer100g": 440
+  },
+  {
+    "name": "Wandu",
+    "caloriesPer100g": 410
+  },
+  {
+    "name": "Ada",
+    "caloriesPer100g": 350
+  },
+  {
+    "name": "Samaposha Aggala",
+    "caloriesPer100g": 326
+  },
+  {
+    "name": "Cream Bun",
+    "caloriesPer100g": 300
+  },
+  {
+    "name": "Kibula Banis",
+    "caloriesPer100g": 350
+  },
+  {
+    "name": "Saw Kanji",
+    "caloriesPer100g": 83.33
+  },
+  {
+    "name": "Lavariya",
+    "caloriesPer100g": 310
+  },
+  {
+    "name": "Vegetable Roll",
+    "caloriesPer100g": 240
+  },
+  {
+    "name": "Jam Paan",
+    "caloriesPer100g": 300
+  },
+  {
+    "name": "Gal Banis",
+    "caloriesPer100g": 400
+  },
+  {
+    "name": "Coconut Cake",
+    "caloriesPer100g": 500
+  },
+  {
+    "name": "Butter Cake",
+    "caloriesPer100g": 440
+  },
+  {
+    "name": "Chocolate Cake",
+    "caloriesPer100g": 416.67
+  },
+  {
+    "name": "Choco bar",
+    "caloriesPer100g": 600
+  },
+  {
+    "name": "Dark chocolate",
+    "caloriesPer100g": 564
+  },
+  {
+    "name": "Chocolate",
+    "caloriesPer100g": 522
+  },
+  {
+    "name": "Fruit & Nut ice cream",
+    "caloriesPer100g": 191.67
+  },
+  {
+    "name": "Chocolate ice cream",
+    "caloriesPer100g": 296.15
+  },
+  {
+    "name": "Wonder choc ice cream",
+    "caloriesPer100g": 316.92
+  },
+  {
+    "name": "Milk cream biscuit",
+    "caloriesPer100g": 466.67
+  },
+  {
+    "name": "Lemon puff",
+    "caloriesPer100g": 453.85
+  },
+  {
+    "name": "Marie biscuit",
+    "caloriesPer100g": 425
+  },
+  {
+    "name": "Chocolate Marie biscuit",
+    "caloriesPer100g": 375
+  },
+  {
+    "name": "Chocolate Cream Biscuit",
+    "caloriesPer100g": 460.87
+  },
+  {
+    "name": "Orange cream biscuit",
+    "caloriesPer100g": 469.57
+  },
+  {
+    "name": "Gold Marie biscuit",
+    "caloriesPer100g": 425
+  },
+  {
+    "name": "Cream cracker biscuit",
+    "caloriesPer100g": 440.48
+  },
+  {
+    "name": "Nice biscuit",
+    "caloriesPer100g": 466.67
+  },
+  {
+    "name": "Hawaiian cookie",
+    "caloriesPer100g": 512
+  },
+  {
+    "name": "Ginger Finger Biscuit",
+    "caloriesPer100g": 450
+  },
+  {
+    "name": "Custard cream biscuit",
+    "caloriesPer100g": 450
+  },
+  {
+    "name": "Batter Carol biscuit",
+    "caloriesPer100g": 448.28
+  },
+  {
+    "name": "Pani Murukku",
+    "caloriesPer100g": 460
+  },
+  {
+    "name": "Boondi",
+    "caloriesPer100g": 480
+  },
+  {
+    "name": "Jelly Jujub",
+    "caloriesPer100g": 350
+  },
+  {
+    "name": "Garlic Murukku",
+    "caloriesPer100g": 500
+  },
+  {
+    "name": "Murukku",
+    "caloriesPer100g": 550
+  },
+  {
+    "name": "Thala Bola",
+    "caloriesPer100g": 520
+  },
+  {
+    "name": "Yogurt",
+    "caloriesPer100g": 112.5
+  },
+  {
+    "name": "Kotmale Vanilla milk",
+    "caloriesPer100g": 82.67
+  },
+  {
+    "name": "Necto",
+    "caloriesPer100g": 30
+  },
+  {
+    "name": "Quinoa",
+    "caloriesPer100g": 150
+  },
+  {
+    "name": "Oats",
+    "caloriesPer100g": 187.5
+  },
+  {
+    "name": "Chicken Breast",
+    "caloriesPer100g": 165
+  },
+  {
+    "name": "Salmon",
+    "caloriesPer100g": 208
+  },
+  {
+    "name": "Tuna",
+    "caloriesPer100g": 132
+  },
+  {
+    "name": "Whole Milk",
+    "caloriesPer100g": 65
+  },
+  {
+    "name": "Skim Milk",
+    "caloriesPer100g": 40
+  },
+  {
+    "name": "Greek Yogurt",
+    "caloriesPer100g": 66.67
+  },
+  {
+    "name": "Apple",
+    "caloriesPer100g": 53.33
+  },
+  {
+    "name": "Olive Oil",
+    "caloriesPer100g": 857.14
+  },
+  {
+    "name": "Almonds",
+    "caloriesPer100g": 600
+  },
+  {
+    "name": "Walnuts",
+    "caloriesPer100g": 633.33
+  },
+  {
+    "name": "Peanut Butter",
+    "caloriesPer100g": 593.75
+  },
+  {
+    "name": "Chicken Kottu",
+    "caloriesPer100g": 205
+  },
+  {
+    "name": "Egg Kottu",
+    "caloriesPer100g": 195
+  },
+  {
+    "name": "Vegetable Kottu",
+    "caloriesPer100g": 170
+  },
+  {
+    "name": "Beef Kottu",
+    "caloriesPer100g": 215
+  },
+  {
+    "name": "Fish Curry",
+    "caloriesPer100g": 140
+  },
+  {
+    "name": "Egg Hopper",
+    "caloriesPer100g": 210
+  }
+]
