@@ -13,7 +13,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Basic health check route
+// Basic health check & ping routes
+app.get('/ping', (req, res) => {
+  res.json({ success: true, message: 'success' });
+});
+
+app.get('/api/ping', (req, res) => {
+  res.json({ success: true, message: 'success' });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'FitTrack API Backend Running Successfully!' });
 });
