@@ -25,6 +25,10 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminAIMonitoring from './pages/admin/AdminAIMonitoring';
 import AdminProfile from './pages/admin/AdminProfile';
 
+// PWA Mobile Components
+import MobileInstallApp from './components/MobileInstallApp';
+import MobileNotificationHandler from './components/MobileNotificationHandler';
+
 // Protected Route Guard for Normal Users
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -177,6 +181,10 @@ export default function App() {
       <AuthProvider>
         <Router>
           <AppRoutes />
+          {/* Mobile-only PWA Installation Prompt / iOS Home Screen Guide */}
+          <MobileInstallApp />
+          {/* Mobile Notification Permissions & Welcome Notification Bar Handler */}
+          <MobileNotificationHandler />
         </Router>
       </AuthProvider>
     </ThemeProvider>

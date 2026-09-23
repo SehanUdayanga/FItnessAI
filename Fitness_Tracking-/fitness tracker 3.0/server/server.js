@@ -14,7 +14,15 @@ app.use(cors());
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 
-// Basic health check route
+// Basic health check & ping routes
+app.get('/ping', (req, res) => {
+  res.json({ success: true, message: 'success' });
+});
+
+app.get('/api/ping', (req, res) => {
+  res.json({ success: true, message: 'success' });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'FitTrack API Backend Running Successfully!' });
 });
