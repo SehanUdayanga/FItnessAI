@@ -20,6 +20,9 @@ import Profile from './pages/Profile';
 import FitTrackAI from './pages/FitTrackAI';
 import AdminDashboard from './pages/AdminDashboard';
 
+// PWA Mobile Install Component
+import MobileInstallApp from './components/MobileInstallApp';
+
 // Protected Route Guard
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -161,6 +164,8 @@ export default function App() {
     <AuthProvider>
       <Router>
         <AppRoutes />
+        {/* Mobile-only PWA Installation Prompt / iOS Home Screen Guide */}
+        <MobileInstallApp />
       </Router>
     </AuthProvider>
   );
