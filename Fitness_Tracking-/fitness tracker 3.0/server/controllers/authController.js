@@ -1,11 +1,11 @@
 const User = require('../models/User');
-const Profile = require('../models/Profile');
+const WeightRecord = require('../models/WeightRecord');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // Generate JWT Token
-const generateToken = (id, role = 'user') => {
-  return jwt.sign({ id, role }, process.env.JWT_SECRET || 'fittrack_secret_key_student_project_2026', {
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET || 'fittrack_secret_key_student_project_2026', {
     expiresIn: '30d'
   });
 };
@@ -37,23 +37,20 @@ const registerUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create user
+    // Create user in users collection
     const user = await User.create({
       name,
       email: email.toLowerCase(),
       password: hashedPassword,
-      role: 'user'
-    });
-
-    // Create empty initial profile for user
-    await Profile.create({
-      userId: user._id,
+      role: 'user',
+      status: 'active',
       age: 25,
       gender: 'Male',
       height: 170,
-      currentWeight: 70,
       targetWeight: 65,
-      healthGoal: 'Maintain Weight'
+      healthGoal: 'Maintain Weight',
+      waterGoal: 2500,
+      profileImage: ''
     });
 
     res.status(201).json({
@@ -64,7 +61,15 @@ const registerUser = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        token: generateToken(user._id, user.role)
+        status: user.status,
+        age: user.age,
+        gender: user.gender,
+        height: user.height,
+        targetWeight: user.targetWeight,
+        healthGoal: user.healthGoal,
+        waterGoal: user.waterGoal,
+        profileImage: user.profileImage,
+        token: generateToken(user._id)
       }
     });
   } catch (error) {
@@ -108,6 +113,21 @@ const loginUser = async (req, res) => {
       });
     }
 
+    // Check if user account is deactivated
+    if (user.status === 'inactive') {
+      return res.status(403).json({
+        success: false,
+        message: 'Your account has been deactivated. Please contact administrator.'
+      });
+    }
+
+    // Update lastLoginAt
+    user.lastLoginAt = new Date();
+    await user.save();
+
+    // Query latest weight dynamically from weightrecords
+    const latestWeightDoc = await WeightRecord.findOne({ userId: user._id }).sort({ date: -1, createdAt: -1 });
+
     res.json({
       success: true,
       message: 'Login successful',
@@ -116,7 +136,16 @@ const loginUser = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role || 'user',
-        token: generateToken(user._id, user.role || 'user')
+        status: user.status || 'active',
+        age: user.age,
+        gender: user.gender,
+        height: user.height,
+        targetWeight: user.targetWeight,
+        healthGoal: user.healthGoal,
+        waterGoal: user.waterGoal,
+        profileImage: user.profileImage,
+        currentWeight: latestWeightDoc ? latestWeightDoc.weight : user.targetWeight || 70,
+        token: generateToken(user._id)
       }
     });
   } catch (error) {
@@ -133,7 +162,7 @@ const loginUser = async (req, res) => {
 // @access  Private
 const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findById(req.user.id || req.user._id).select('-password');
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -141,13 +170,27 @@ const getMe = async (req, res) => {
       });
     }
 
-    const profile = await Profile.findOne({ userId: req.user.id });
+    if (user.status === 'inactive') {
+      return res.status(403).json({
+        success: false,
+        message: 'Account is deactivated'
+      });
+    }
+
+    // Fetch latest weight dynamically from weightrecords
+    const latestWeightDoc = await WeightRecord.findOne({ userId: user._id }).sort({ date: -1, createdAt: -1 });
+    const currentWeight = latestWeightDoc ? latestWeightDoc.weight : user.targetWeight || 70;
+
+    const userData = {
+      ...user.toObject(),
+      currentWeight
+    };
 
     res.json({
       success: true,
       data: {
-        user,
-        profile
+        user: userData,
+        profile: userData // Backward compatibility for any frontend component expecting data.profile
       }
     });
   } catch (error) {

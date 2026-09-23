@@ -27,18 +27,19 @@ const Modal = ({ isOpen, onClose, title, children }) => {
       />
 
       {/* Modal Content */}
-      <div className="relative w-full max-w-md bg-white rounded-[22px] shadow-2xl border border-line overflow-hidden z-10 animate-in fade-in zoom-in duration-200">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-line bg-[#FAFAF8]">
-          <h3 className="font-sora text-base font-bold text-navy-900">{title}</h3>
+      <div className="relative w-full max-w-[440px] max-h-[88vh] flex flex-col bg-white/60 backdrop-blur-xl border border-white/80 dark:bg-slate-800/40 dark:backdrop-blur-xl dark:border-white/10 dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] overflow-hidden z-10 animate-in fade-in zoom-in duration-200">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-white/80 dark:border-white/10 bg-white/40 dark:bg-slate-800/50 flex-shrink-0">
+          <h3 className="font-sora text-sm font-bold text-navy-900 dark:text-slate-200">{title}</h3>
           <button
             onClick={onClose}
-            aria-label="Close modal"
-            className="p-1 rounded-lg text-slate-400 hover:text-navy-900 hover:bg-slate-200/60 transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-navy-900 dark:text-slate-200 hover:bg-slate-200/60 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
-        <div className="p-6">{children}</div>
+        <div className="p-4 sm:p-5 overflow-y-auto flex-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          {children}
+        </div>
       </div>
     </div>
   );

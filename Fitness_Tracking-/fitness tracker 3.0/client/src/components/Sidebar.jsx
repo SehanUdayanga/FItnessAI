@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import {
   LayoutDashboard,
   TrendingUp,
-  Utensils,
   Droplets,
   Scale,
   Calculator,
@@ -12,8 +11,7 @@ import {
   User,
   LogOut,
   Activity,
-  X,
-  ShieldCheck
+  X
 } from 'lucide-react';
 
 const Sidebar = ({ mobileOpen, setMobileOpen }) => {
@@ -23,15 +21,11 @@ const Sidebar = ({ mobileOpen, setMobileOpen }) => {
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Progress', path: '/progress', icon: TrendingUp },
-    { name: 'Nutrition', path: '/meals', icon: Utensils },
     { name: 'Water', path: '/water', icon: Droplets },
     { name: 'Health & BMI', path: '/bmi', icon: Calculator },
     { name: 'Weight History', path: '/weight', icon: Scale },
     { name: 'AI Assistant', path: '/ai-assistant', icon: Bot, badge: 'AI' },
     { name: 'Profile', path: '/profile', icon: User },
-    ...(user?.role === 'admin'
-      ? [{ name: 'Admin Panel', path: '/admin', icon: ShieldCheck, badge: 'ADMIN' }]
-      : [])
   ];
 
   const handleLogout = () => {
@@ -40,9 +34,9 @@ const Sidebar = ({ mobileOpen, setMobileOpen }) => {
   };
 
   const navContent = (
-    <div className="flex flex-col h-full bg-navy-900 text-white w-64 p-4 border-r border-line-dark">
+    <div className="flex flex-col h-full bg-navy-900 text-white w-64 p-4 border-r border-line dark:border-slate-700-dark">
       {/* Brand Header */}
-      <div className="flex items-center justify-between px-3 py-4 mb-4 border-b border-line-dark">
+      <div className="flex items-center justify-between px-3 py-4 mb-4 border-b border-line dark:border-slate-700-dark">
         <NavLink to="/dashboard" className="flex items-center space-x-3">
           <div className="w-8 h-8 rounded-[9px] bg-green-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
             <Activity className="w-4 h-4" />
@@ -94,8 +88,8 @@ const Sidebar = ({ mobileOpen, setMobileOpen }) => {
       </div>
 
       {/* User Quick Info & Logout */}
-      <div className="pt-4 border-t border-line-dark mt-auto space-y-2">
-        <div className="flex items-center justify-between p-2.5 rounded-[12px] bg-navy-800 border border-line-dark/60">
+      <div className="pt-4 border-t border-line dark:border-slate-700-dark mt-auto space-y-2">
+        <div className="flex items-center justify-between p-2.5 rounded-[12px] bg-navy-800 border border-line dark:border-slate-700-dark/60">
           <div className="flex items-center space-x-3 overflow-hidden">
             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-green-400 to-green-700 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
               {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}

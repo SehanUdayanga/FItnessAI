@@ -5,7 +5,7 @@ import AIChatWidget from '../components/AIChatWidget';
 
 const MainLayout = () => {
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-slate-700 flex flex-col selection:bg-green-100 selection:text-green-900 font-inter relative">
+    <div className="min-h-screen bg-[#FAFAF8] dark:bg-slate-950 text-slate-700 dark:text-slate-200 flex flex-col selection:bg-green-100 selection:text-green-900 dark:selection:bg-slate-800 dark:selection:text-slate-100 font-inter relative">
       {/* Top Navbar */}
       <Navbar />
 

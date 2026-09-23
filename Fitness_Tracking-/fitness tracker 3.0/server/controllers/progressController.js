@@ -1,16 +1,15 @@
 const WeightRecord = require('../models/WeightRecord');
-const HealthMetric = require('../models/HealthMetric');
 const WaterIntake = require('../models/WaterIntake');
 const Meal = require('../models/Meal');
-const Profile = require('../models/Profile');
+const User = require('../models/User');
 
-// @desc    Get progress tracking data (supports ?range=7days|4weeks and ?date=YYYY-MM-DD)
+// @desc    Get progress tracking data calculated dynamically from the 4 official collections
 // @route   GET /api/progress
 // @access  Private
 const getProgressData = async (req, res) => {
   try {
     const { range, date } = req.query; // '7days' or '4weeks'
-    const userId = req.user.id;
+    const userId = req.user.id || req.user._id;
     const numDays = range === '4weeks' ? 28 : 7;
     const anchorDateStr = date || new Date().toISOString().split('T')[0];
 
@@ -26,21 +25,21 @@ const getProgressData = async (req, res) => {
       dateList.push(d.toISOString().split('T')[0]);
     }
 
-    // Fetch user profile for goals
-    const profile = await Profile.findOne({ userId });
-    const goalWeight = profile?.targetWeight || 65.0;
-    const goalWater = (profile?.waterGoal || 2500) / 1000;
-    const goalCalories = profile?.calorieGoal || 2100;
+    // Fetch user for goals
+    const user = await User.findById(userId).select('targetWeight waterGoal');
+    const goalWeight = user?.targetWeight || 65.0;
+    const goalWater = parseFloat(((user?.waterGoal || 2500) / 1000).toFixed(1)); // in Liters
+    const goalCalories = 2100; // in kcal
 
     // Fetch all user weight records to compute starting weight & historical weights
     const allWeightRecords = await WeightRecord.find({ userId }).sort({ date: 1 });
     const startingWeight = allWeightRecords.length > 0
       ? allWeightRecords[0].weight
-      : (profile?.currentWeight || 72.0);
+      : goalWeight;
 
     const latestWeightRecord = allWeightRecords.length > 0
       ? allWeightRecords[allWeightRecords.length - 1].weight
-      : (profile?.currentWeight || 68.5);
+      : goalWeight;
 
     // Fetch records in date list
     const weightRecords = await WeightRecord.find({
@@ -142,7 +141,7 @@ const getProgressData = async (req, res) => {
         day: '2-digit',
         month: 'short',
         year: 'numeric'
-      }); // e.g. "01 Sep 2026"
+      });
 
       const displayWeight = dayWeight ? `${dayWeight.weight} kg` : `${currentWeight} kg`;
 

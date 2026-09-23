@@ -111,8 +111,8 @@ const AdminProfile = () => {
     <div className="space-y-8 max-w-4xl">
       {/* Header */}
       <div>
-        <h2 className="font-sora font-bold text-xl text-navy-900">Admin Profile &amp; Security</h2>
-        <p className="text-xs text-slate-500">
+        <h2 className="font-sora font-bold text-xl text-navy-900 dark:text-slate-200">Admin Profile &amp; Security</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Manage your administrator account credentials and access credentials
         </p>
       </div>
@@ -122,7 +122,7 @@ const AdminProfile = () => {
         {/* Left Column: Admin Identity Summary Card (5 cols) */}
         {/* ========================================================= */}
         <div className="md:col-span-5 space-y-6">
-          <div className="bg-white rounded-2xl border border-line shadow-xs p-6 text-center space-y-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xs p-6 text-center space-y-4">
             <div className="relative inline-block">
               <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-green-500 to-green-700 text-white flex items-center justify-center font-bold text-2xl mx-auto shadow-md shadow-green-700/20">
                 {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
@@ -133,8 +133,8 @@ const AdminProfile = () => {
             </div>
 
             <div>
-              <h3 className="font-sora font-bold text-lg text-navy-900">{user?.name || 'Administrator'}</h3>
-              <p className="text-xs font-mono text-slate-500">{user?.email || 'admin@fittrack.com'}</p>
+              <h3 className="font-sora font-bold text-lg text-navy-900 dark:text-slate-200">{user?.name || 'Administrator'}</h3>
+              <p className="text-xs font-mono text-slate-500 dark:text-slate-400">{user?.email || 'admin@fittrack.com'}</p>
             </div>
 
             <div className="inline-flex items-center space-x-1.5 bg-green-50 border border-green-200 text-green-800 text-xs font-semibold px-3 py-1 rounded-full font-mono">
@@ -142,14 +142,14 @@ const AdminProfile = () => {
               <span>Role: Administrator</span>
             </div>
 
-            <div className="pt-4 border-t border-line text-left text-xs space-y-2 text-slate-500">
+            <div className="pt-4 border-t border-line dark:border-slate-700 text-left text-xs space-y-2 text-slate-500 dark:text-slate-400">
               <div className="flex justify-between">
                 <span>Account Status:</span>
                 <span className="font-semibold text-green-700">Active</span>
               </div>
               <div className="flex justify-between">
                 <span>Access Level:</span>
-                <span className="font-semibold text-navy-900">Full Administrative</span>
+                <span className="font-semibold text-navy-900 dark:text-slate-200">Full Administrative</span>
               </div>
             </div>
 
@@ -168,13 +168,13 @@ const AdminProfile = () => {
         {/* ========================================================= */}
         <div className="md:col-span-7 space-y-6">
           {/* 1. Edit Profile Form */}
-          <div className="bg-white rounded-2xl border border-line shadow-xs p-6 space-y-5">
-            <div className="flex items-center space-x-2.5 border-b border-line pb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xs p-6 space-y-5">
+            <div className="flex items-center space-x-2.5 border-b border-line dark:border-slate-700 pb-4">
               <div className="w-8 h-8 rounded-lg bg-green-100 text-green-700 flex items-center justify-center">
                 <Edit3 className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-sora font-bold text-base text-navy-900">Edit Profile</h3>
+                <h3 className="font-sora font-bold text-base text-navy-900 dark:text-slate-200">Edit Profile</h3>
                 <p className="text-[11px] text-slate-400">Update your administrator display name and email</p>
               </div>
             </div>
@@ -210,7 +210,7 @@ const AdminProfile = () => {
                     required
                     value={profileForm.name}
                     onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                   />
                 </div>
               </div>
@@ -228,7 +228,7 @@ const AdminProfile = () => {
                     required
                     value={profileForm.email}
                     onChange={(e) => setProfileForm({ ...profileForm, email: e.target.value })}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                   />
                 </div>
               </div>
@@ -241,7 +241,7 @@ const AdminProfile = () => {
                   type="text"
                   disabled
                   value="Administrator (ADMIN)"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-slate-100 text-slate-500 text-sm font-semibold cursor-not-allowed"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-sm font-semibold cursor-not-allowed dark:placeholder-slate-500"
                 />
               </div>
 
@@ -258,13 +258,13 @@ const AdminProfile = () => {
           </div>
 
           {/* 2. Change Password Form */}
-          <div className="bg-white rounded-2xl border border-line shadow-xs p-6 space-y-5">
-            <div className="flex items-center space-x-2.5 border-b border-line pb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xs p-6 space-y-5">
+            <div className="flex items-center space-x-2.5 border-b border-line dark:border-slate-700 pb-4">
               <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
                 <KeyRound className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-sora font-bold text-base text-navy-900">Change Password</h3>
+                <h3 className="font-sora font-bold text-base text-navy-900 dark:text-slate-200">Change Password</h3>
                 <p className="text-[11px] text-slate-400">Update your account login password</p>
               </div>
             </div>
@@ -303,7 +303,7 @@ const AdminProfile = () => {
                       setPasswordForm({ ...passwordForm, currentPassword: e.target.value })
                     }
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                   />
                 </div>
               </div>
@@ -324,7 +324,7 @@ const AdminProfile = () => {
                       setPasswordForm({ ...passwordForm, newPassword: e.target.value })
                     }
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                   />
                 </div>
               </div>
@@ -345,7 +345,7 @@ const AdminProfile = () => {
                       setPasswordForm({ ...passwordForm, confirmPassword: e.target.value })
                     }
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                   />
                 </div>
               </div>

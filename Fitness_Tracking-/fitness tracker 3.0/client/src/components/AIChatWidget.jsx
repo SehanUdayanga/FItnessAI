@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import {
   Bot,
@@ -7,10 +8,12 @@ import {
   Sparkles,
   MessageSquare,
   Minus,
-  Maximize2
+  Maximize2,
+  Utensils
 } from 'lucide-react';
 
 const AIChatWidget = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -92,9 +95,9 @@ const AIChatWidget = () => {
 
       {/* Floating Popup Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-[380px] sm:w-[420px] max-w-[calc(100vw-32px)] h-[560px] max-h-[calc(100vh-120px)] bg-navy-900 text-white rounded-2xl shadow-2xl border border-line-dark flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-200">
+        <div className="fixed bottom-24 right-6 z-50 w-[380px] sm:w-[420px] max-w-[calc(100vw-32px)] h-[560px] max-h-[calc(100vh-120px)] bg-navy-900 text-white rounded-2xl shadow-2xl border border-line dark:border-slate-700-dark flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-200">
           {/* Header */}
-          <div className="px-5 py-3.5 bg-navy-950/80 border-b border-line-dark flex items-center justify-between flex-shrink-0">
+          <div className="px-5 py-3.5 bg-navy-950/80 border-b border-line dark:border-slate-700-dark flex items-center justify-between flex-shrink-0">
             <div className="flex items-center space-x-2.5">
               <div className="w-8 h-8 rounded-xl bg-green-400/20 text-green-400 flex items-center justify-center shadow-xs">
                 <Bot className="w-4 h-4" />
@@ -122,7 +125,7 @@ const AIChatWidget = () => {
           </div>
 
           {/* Dynamic Guidance Banner */}
-          <div className="bg-navy-800/80 px-4 py-2.5 border-b border-line-dark/60 flex items-start space-x-2 flex-shrink-0">
+          <div className="bg-navy-800/80 px-4 py-2.5 border-b border-line dark:border-slate-700-dark/60 flex items-start space-x-2 flex-shrink-0">
             <Sparkles className="w-3.5 h-3.5 text-green-400 flex-shrink-0 mt-0.5" />
             <p className="text-xs text-[#E7EBEA] italic font-inter leading-tight">
               "{guidanceText}"
@@ -148,7 +151,7 @@ const AIChatWidget = () => {
                   className={`max-w-[82%] rounded-2xl px-3.5 py-2 text-xs leading-relaxed whitespace-pre-line ${
                     msg.sender === 'user'
                       ? 'bg-green-700 text-white rounded-br-none shadow-xs'
-                      : 'bg-navy-800 text-[#E7EBEA] border border-line-dark/60 rounded-bl-none'
+                      : 'bg-navy-800 text-[#E7EBEA] border border-line dark:border-slate-700-dark/60 rounded-bl-none'
                   }`}
                 >
                   {msg.text}
@@ -166,7 +169,22 @@ const AIChatWidget = () => {
           </div>
 
           {/* Quick Prompts */}
-          <div className="px-3 py-2 bg-navy-900/90 border-t border-line-dark/50 flex flex-wrap gap-1.5 flex-shrink-0">
+          <div className="px-3 py-2 bg-navy-900/90 border-t border-line dark:border-slate-700-dark/50 flex flex-wrap gap-1.5 flex-shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
+                navigate('/dashboard');
+                setTimeout(() => {
+                  const el = document.getElementById('meals-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
+              className="text-[10px] bg-green-900/60 hover:bg-green-800 text-green-300 hover:text-white px-2.5 py-1 rounded-md border border-green-700/60 transition-colors flex items-center space-x-1 font-semibold"
+            >
+              <Utensils className="w-3 h-3" />
+              <span>Track Meals in Dashboard</span>
+            </button>
             {[
               'How am I doing today?',
               'How is my weight progressing?',
@@ -178,7 +196,7 @@ const AIChatWidget = () => {
                 type="button"
                 onClick={() => handleSendMessage(prompt)}
                 disabled={isTyping}
-                className="text-[10px] bg-navy-800 hover:bg-navy-700 text-slate-300 hover:text-white px-2.5 py-1 rounded-md border border-line-dark/60 transition-colors disabled:opacity-50"
+                className="text-[10px] bg-navy-800 hover:bg-navy-700 text-slate-300 hover:text-white px-2.5 py-1 rounded-md border border-line dark:border-slate-700-dark/60 transition-colors disabled:opacity-50"
               >
                 {prompt}
               </button>
@@ -191,7 +209,7 @@ const AIChatWidget = () => {
               e.preventDefault();
               handleSendMessage();
             }}
-            className="p-3 bg-navy-950 border-t border-line-dark flex items-center gap-2 flex-shrink-0"
+            className="p-3 bg-navy-950 border-t border-line dark:border-slate-700-dark flex items-center gap-2 flex-shrink-0"
           >
             <input
               type="text"
@@ -199,7 +217,7 @@ const AIChatWidget = () => {
               onChange={(e) => setInput(e.target.value)}
               disabled={isTyping}
               placeholder="Ask anything about health, food, workout..."
-              className="flex-1 px-3.5 py-2 rounded-xl bg-navy-800 border border-line-dark text-white placeholder-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-green-500 font-inter"
+              className="flex-1 px-3.5 py-2 rounded-xl bg-navy-800 border border-line dark:border-slate-700-dark text-white placeholder-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-green-500 font-inter"
             />
             <button
               type="submit"

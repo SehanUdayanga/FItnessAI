@@ -119,19 +119,19 @@ const FitTrackAI = () => {
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-8">
       {/* Page Title & Header */}
-      <div className="bg-white p-6 rounded-[16px] border border-line shadow-sm">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-[16px] border border-line dark:border-slate-700 shadow-sm">
         <div className="flex items-center space-x-3.5">
           <div className="w-12 h-12 rounded-[12px] bg-green-700 flex items-center justify-center text-white shadow-md shadow-green-700/20 flex-shrink-0">
             <Bot className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="font-sora text-2xl font-bold text-navy-900 tracking-tight flex items-center gap-2.5">
+            <h1 className="font-sora text-2xl font-bold text-navy-900 dark:text-slate-200 tracking-tight flex items-center gap-2.5">
               FitTrack AI Assistant
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 font-mono">
-                <Sparkles className="w-3.5 h-3.5" /> Groq AI
+                <Sparkles className="w-3.5 h-3.5" /> Gemini Flash
               </span>
             </h1>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium">Your personalized health assistant</p>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Your personalized health assistant</p>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@ const FitTrackAI = () => {
       {/* Main Grid: Chat Area + Health Snapshot */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Chat Container (Takes 2 Columns on Desktop) */}
-        <div className="lg:col-span-2 flex flex-col bg-white rounded-[16px] border border-line shadow-sm h-[620px]">
+        <div className="lg:col-span-2 flex flex-col bg-white dark:bg-slate-800 rounded-[16px] border border-line dark:border-slate-700 shadow-sm h-[620px]">
           {/* Chat Messages List */}
           <div className="flex-1 p-4 md:p-6 overflow-y-auto space-y-4">
             {messages.map((msg) => (
@@ -169,7 +169,7 @@ const FitTrackAI = () => {
                   className={`max-w-[82%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                     msg.sender === 'user'
                       ? 'bg-green-700 text-white rounded-tr-none shadow-sm'
-                      : 'bg-[#FAFAF8] text-navy-900 border border-line rounded-tl-none'
+                      : 'bg-[#FAFAF8] dark:bg-slate-900 text-navy-900 dark:text-slate-200 border border-line dark:border-slate-700 rounded-tl-none'
                   }`}
                 >
                   {msg.text}
@@ -183,7 +183,7 @@ const FitTrackAI = () => {
                 <div className="w-9 h-9 rounded-xl bg-navy-900 text-green-400 flex items-center justify-center flex-shrink-0 shadow-sm">
                   <Bot className="w-4 h-4" />
                 </div>
-                <div className="bg-[#FAFAF8] text-slate-600 border border-line rounded-2xl rounded-tl-none px-4 py-3 text-sm flex items-center space-x-2">
+                <div className="bg-[#FAFAF8] dark:bg-slate-900 text-slate-600 border border-line dark:border-slate-700 rounded-2xl rounded-tl-none px-4 py-3 text-sm flex items-center space-x-2">
                   <Loader2 className="w-4 h-4 animate-spin text-green-700" />
                   <span className="font-medium text-slate-600">FitTrack AI is thinking...</span>
                 </div>
@@ -202,13 +202,13 @@ const FitTrackAI = () => {
           </div>
 
           {/* Suggested Questions */}
-          <div className="px-4 py-2 border-t border-line bg-[#FAFAF8] flex flex-wrap gap-2">
+          <div className="px-4 py-2 border-t border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 flex flex-wrap gap-2">
             {suggestedQuestions.map((q, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSendMessage(q)}
                 disabled={loading}
-                className="text-xs font-mono font-medium bg-white hover:bg-green-100 hover:text-green-800 hover:border-green-400 border border-line text-slate-700 px-3 py-1.5 rounded-full transition-all duration-150 disabled:opacity-50"
+                className="text-xs font-mono font-medium bg-white dark:bg-slate-800 hover:bg-green-100 hover:text-green-800 hover:border-green-400 border border-line dark:border-slate-700 text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-full transition-all duration-150 disabled:opacity-50"
               >
                 [ {q} ]
               </button>
@@ -216,7 +216,7 @@ const FitTrackAI = () => {
           </div>
 
           {/* Bottom Chat Input Bar */}
-          <div className="p-4 border-t border-line bg-white rounded-b-[16px]">
+          <div className="p-4 border-t border-line dark:border-slate-700 bg-white dark:bg-slate-800 rounded-b-[16px]">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -231,7 +231,7 @@ const FitTrackAI = () => {
                 onKeyDown={handleKeyDown}
                 disabled={loading}
                 placeholder="Ask FitTrack AI..."
-                className="flex-1 bg-[#FAFAF8] border border-line rounded-xl px-4 py-3 text-sm text-navy-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:bg-white transition-all disabled:opacity-60"
+                className="flex-1 bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-navy-900 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:bg-white dark:bg-slate-800 transition-all disabled:opacity-60"
               />
               <button
                 type="submit"
@@ -250,9 +250,9 @@ const FitTrackAI = () => {
 
         {/* Health Snapshot Sidebar (Right Column) */}
         <div className="lg:col-span-1 space-y-4">
-          <div className="bg-white p-5 rounded-[16px] border border-line shadow-sm space-y-4">
-            <div className="flex items-center justify-between border-b border-line pb-3">
-              <h2 className="font-sora font-bold text-navy-900 text-base flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-[16px] border border-line dark:border-slate-700 shadow-sm space-y-4">
+            <div className="flex items-center justify-between border-b border-line dark:border-slate-700 pb-3">
+              <h2 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base flex items-center gap-2">
                 <Activity className="w-5 h-5 text-green-700" />
                 Your Health Snapshot
               </h2>
@@ -266,55 +266,55 @@ const FitTrackAI = () => {
             ) : snapshot ? (
               <div className="space-y-3">
                 {/* Current Weight */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] border border-line">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
                       <Scale className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[11px] text-slate-500 font-medium font-mono uppercase">Current Weight</p>
-                      <p className="text-sm font-bold text-navy-900 font-mono">{snapshot.currentWeight} kg</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium font-mono uppercase">Current Weight</p>
+                      <p className="text-sm font-bold text-navy-900 dark:text-slate-200 font-mono">{snapshot.currentWeight} kg</p>
                     </div>
                   </div>
                 </div>
 
                 {/* BMI */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] border border-line">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
                       <Activity className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[11px] text-slate-500 font-medium font-mono uppercase">BMI</p>
-                      <p className="text-sm font-bold text-navy-900 font-mono">
-                        {snapshot.bmi} <span className="text-xs font-medium text-slate-500">({snapshot.bmiCategory})</span>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium font-mono uppercase">BMI</p>
+                      <p className="text-sm font-bold text-navy-900 dark:text-slate-200 font-mono">
+                        {snapshot.bmi} <span className="text-xs font-medium text-slate-500 dark:text-slate-400">({snapshot.bmiCategory})</span>
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Today's Water */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] border border-line">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center">
                       <Droplet className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[11px] text-slate-500 font-medium font-mono uppercase">Today's Water</p>
-                      <p className="text-sm font-bold text-navy-900 font-mono">{snapshot.todayWater} ml</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium font-mono uppercase">Today's Water</p>
+                      <p className="text-sm font-bold text-navy-900 dark:text-slate-200 font-mono">{snapshot.todayWater} ml</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Today's Calories */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] border border-line">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center">
                       <Flame className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[11px] text-slate-500 font-medium font-mono uppercase">Today's Calories</p>
-                      <p className="text-sm font-bold text-navy-900 font-mono">{snapshot.todayCalories} kcal</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium font-mono uppercase">Today's Calories</p>
+                      <p className="text-sm font-bold text-navy-900 dark:text-slate-200 font-mono">{snapshot.todayCalories} kcal</p>
                     </div>
                   </div>
                 </div>

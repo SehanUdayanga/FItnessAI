@@ -258,15 +258,15 @@ const AdminDashboard = () => {
       <div>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="font-sora font-bold text-xl text-navy-900">Platform Overview</h2>
-            <p className="text-xs text-slate-500">Live dynamic metrics from MongoDB users collection</p>
+            <h2 className="font-sora font-bold text-xl text-navy-900 dark:text-slate-200">Platform Overview</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Live dynamic metrics from MongoDB users collection</p>
           </div>
           <button
             onClick={() => {
               fetchStats();
               fetchUsers();
             }}
-            className="flex items-center space-x-1.5 px-3 py-1.5 bg-white border border-line rounded-lg text-xs font-semibold text-slate-600 hover:text-navy-900 shadow-xs transition-colors"
+            className="flex items-center space-x-1.5 px-3 py-1.5 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-lg text-xs font-semibold text-slate-600 hover:text-navy-900 dark:text-slate-200 shadow-xs transition-colors"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${statsLoading ? 'animate-spin text-green-700' : ''}`} />
             <span>Refresh</span>
@@ -275,13 +275,13 @@ const AdminDashboard = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {/* 1. Total Users */}
-          <div className="bg-white p-6 rounded-2xl border border-line shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-line dark:border-slate-700 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-semibold font-mono uppercase tracking-wider text-slate-500">
+                <p className="text-xs font-semibold font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Total Users
                 </p>
-                <h3 className="font-sora text-3xl font-extrabold text-navy-900 mt-2">
+                <h3 className="font-sora text-3xl font-extrabold text-navy-900 dark:text-slate-200 mt-2">
                   {statsLoading ? '—' : stats.totalUsers}
                 </h3>
                 <p className="text-[11px] text-slate-400 mt-1">Registered member accounts</p>
@@ -294,10 +294,10 @@ const AdminDashboard = () => {
           </div>
 
           {/* 2. Active Users */}
-          <div className="bg-white p-6 rounded-2xl border border-line shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-line dark:border-slate-700 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-semibold font-mono uppercase tracking-wider text-slate-500">
+                <p className="text-xs font-semibold font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Active Users
                 </p>
                 <h3 className="font-sora text-3xl font-extrabold text-green-700 mt-2">
@@ -313,10 +313,10 @@ const AdminDashboard = () => {
           </div>
 
           {/* 3. Inactive Users */}
-          <div className="bg-white p-6 rounded-2xl border border-line shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-line dark:border-slate-700 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-semibold font-mono uppercase tracking-wider text-slate-500">
+                <p className="text-xs font-semibold font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Inactive Users
                 </p>
                 <h3 className="font-sora text-3xl font-extrabold text-amber-600 mt-2">
@@ -334,16 +334,16 @@ const AdminDashboard = () => {
       </div>
 
       {/* User Management Section */}
-      <div className="bg-white rounded-2xl border border-line shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xs overflow-hidden">
         {/* Section Header & Toolbar */}
-        <div className="p-6 border-b border-line space-y-4">
+        <div className="p-6 border-b border-line dark:border-slate-700 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <h2 className="font-sora font-bold text-lg text-navy-900">User Management</h2>
-              <p className="text-xs text-slate-500">Manage member accounts, view tracking logs, and update records</p>
+              <h2 className="font-sora font-bold text-lg text-navy-900 dark:text-slate-200">User Management</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Manage member accounts, view tracking logs, and update records</p>
             </div>
-            <span className="text-xs font-mono text-slate-500 bg-slate-50 px-3 py-1.5 rounded-lg border border-line self-start sm:self-auto">
-              Total: <span className="font-bold text-navy-900">{totalCount}</span> Users
+            <span className="text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-50 px-3 py-1.5 rounded-lg border border-line dark:border-slate-700 self-start sm:self-auto">
+              Total: <span className="font-bold text-navy-900 dark:text-slate-200">{totalCount}</span> Users
             </span>
           </div>
 
@@ -359,7 +359,7 @@ const AdminDashboard = () => {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 placeholder="Search users by name or email..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent text-sm text-navy-900"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent text-sm text-navy-900 dark:text-slate-200 dark:placeholder-slate-500"
               />
               {searchQuery && (
                 <button
@@ -379,7 +379,7 @@ const AdminDashboard = () => {
               <select
                 value={statusFilter}
                 onChange={handleStatusFilterChange}
-                className="w-full pl-9 pr-8 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm font-medium text-navy-900 cursor-pointer"
+                className="w-full pl-9 pr-8 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm font-medium text-navy-900 dark:text-slate-200 cursor-pointer"
               >
                 <option value="all">All Statuses</option>
                 <option value="active">Active Only</option>
@@ -393,7 +393,7 @@ const AdminDashboard = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-50/80 border-b border-line text-[11px] font-mono uppercase tracking-wider text-slate-500">
+              <tr className="bg-slate-50/80 border-b border-line dark:border-slate-700 text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 <th className="py-3.5 px-6">User</th>
                 <th className="py-3.5 px-4">Email</th>
                 <th className="py-3.5 px-4 text-center">Age</th>
@@ -406,7 +406,7 @@ const AdminDashboard = () => {
               {tableLoading ? (
                 <tr>
                   <td colSpan="6" className="py-12 text-center">
-                    <div className="inline-flex items-center space-x-2 text-slate-500 font-medium">
+                    <div className="inline-flex items-center space-x-2 text-slate-500 dark:text-slate-400 font-medium">
                       <RefreshCw className="w-5 h-5 animate-spin text-green-700" />
                       <span>Loading user directory...</span>
                     </div>
@@ -416,13 +416,13 @@ const AdminDashboard = () => {
                 <tr>
                   <td colSpan="6" className="py-12 text-center text-slate-400">
                     <UserX className="w-10 h-10 mx-auto mb-2 text-slate-300" />
-                    <p className="font-semibold text-navy-900">No users found</p>
-                    <p className="text-xs text-slate-500 mt-1">Try changing your search keywords or filter status.</p>
+                    <p className="font-semibold text-navy-900 dark:text-slate-200">No users found</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Try changing your search keywords or filter status.</p>
                   </td>
                 </tr>
               ) : (
                 users.map((item) => (
-                  <tr key={item._id} className="hover:bg-[#FAFAF8] transition-colors group">
+                  <tr key={item._id} className="hover:bg-[#FAFAF8] dark:bg-slate-900 transition-colors group">
                     {/* Name & Avatar */}
                     <td className="py-4 px-6">
                       <button
@@ -433,7 +433,7 @@ const AdminDashboard = () => {
                           {item.name ? item.name.charAt(0).toUpperCase() : 'U'}
                         </div>
                         <div>
-                          <span className="font-semibold text-navy-900 block hover:text-green-700 transition-colors">
+                          <span className="font-semibold text-navy-900 dark:text-slate-200 block hover:text-green-700 transition-colors">
                             {item.name}
                           </span>
                           <span className="text-[11px] text-slate-400 font-mono">
@@ -449,13 +449,13 @@ const AdminDashboard = () => {
                     </td>
 
                     {/* Age */}
-                    <td className="py-4 px-4 text-center font-mono text-xs text-slate-700">
+                    <td className="py-4 px-4 text-center font-mono text-xs text-slate-700 dark:text-slate-200">
                       {item.age || 25} yrs
                     </td>
 
                     {/* Fitness Goal */}
                     <td className="py-4 px-4">
-                      <span className="inline-flex items-center text-xs font-medium text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md">
+                      <span className="inline-flex items-center text-xs font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 px-2.5 py-1 rounded-md">
                         {item.fitnessGoal || 'Maintain Weight'}
                       </span>
                     </td>
@@ -485,7 +485,7 @@ const AdminDashboard = () => {
                         <button
                           onClick={() => handleOpenViewModal(item)}
                           title="View User Details & Activity"
-                          className="p-1.5 text-slate-500 hover:text-green-700 hover:bg-green-50 rounded-lg transition-colors"
+                          className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-green-700 hover:bg-green-50 rounded-lg transition-colors"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
@@ -494,7 +494,7 @@ const AdminDashboard = () => {
                         <button
                           onClick={() => openEditModal(item)}
                           title="Edit User"
-                          className="p-1.5 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                          className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         >
                           <Edit2 className="w-4 h-4" />
                         </button>
@@ -530,17 +530,17 @@ const AdminDashboard = () => {
         </div>
 
         {/* Pagination Bar */}
-        <div className="p-4 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+        <div className="p-4 border-t border-line dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
           <div>
-            Showing <span className="font-semibold text-navy-900">{users.length}</span> of{' '}
-            <span className="font-semibold text-navy-900">{totalCount}</span> users (Page {page} of {totalPages})
+            Showing <span className="font-semibold text-navy-900 dark:text-slate-200">{users.length}</span> of{' '}
+            <span className="font-semibold text-navy-900 dark:text-slate-200">{totalCount}</span> users (Page {page} of {totalPages})
           </div>
 
           <div className="flex items-center space-x-1">
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page <= 1 || tableLoading}
-              className="px-3 py-1.5 rounded-lg border border-line bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed font-medium flex items-center space-x-1"
+              className="px-3 py-1.5 rounded-lg border border-line dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed font-medium flex items-center space-x-1"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
               <span>Previous</span>
@@ -558,7 +558,7 @@ const AdminDashboard = () => {
                       className={`w-8 h-8 rounded-lg font-semibold transition-colors ${
                         page === p
                           ? 'bg-green-700 text-white shadow-xs'
-                          : 'border border-line bg-white hover:bg-slate-50 text-slate-700'
+                          : 'border border-line dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 text-slate-700 dark:text-slate-200'
                       }`}
                     >
                       {p}
@@ -570,7 +570,7 @@ const AdminDashboard = () => {
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page >= totalPages || tableLoading}
-              className="px-3 py-1.5 rounded-lg border border-line bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed font-medium flex items-center space-x-1"
+              className="px-3 py-1.5 rounded-lg border border-line dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed font-medium flex items-center space-x-1"
             >
               <span>Next</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -584,16 +584,16 @@ const AdminDashboard = () => {
       {/* ========================================================= */}
       {viewUser && (
         <div className="fixed inset-0 bg-navy-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-line shadow-xl max-w-2xl w-full overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col max-h-[90vh]">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xl max-w-2xl w-full overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col max-h-[90vh]">
             {/* Modal Header */}
-            <div className="p-5 border-b border-line flex items-center justify-between bg-slate-50 flex-shrink-0">
+            <div className="p-5 border-b border-line dark:border-slate-700 flex items-center justify-between bg-slate-50 flex-shrink-0">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-xl bg-green-100 text-green-700 flex items-center justify-center font-bold text-sm">
                   {viewUser.name ? viewUser.name.charAt(0).toUpperCase() : 'U'}
                 </div>
                 <div>
-                  <h3 className="font-sora font-bold text-base text-navy-900">{viewUser.name}</h3>
-                  <p className="text-xs font-mono text-slate-500">{viewUser.email}</p>
+                  <h3 className="font-sora font-bold text-base text-navy-900 dark:text-slate-200">{viewUser.name}</h3>
+                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400">{viewUser.email}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -608,7 +608,7 @@ const AdminDashboard = () => {
                 </span>
                 <button
                   onClick={() => setViewUser(null)}
-                  className="text-slate-400 hover:text-navy-900 p-1.5 rounded-lg hover:bg-slate-200 transition-colors"
+                  className="text-slate-400 hover:text-navy-900 dark:text-slate-200 p-1.5 rounded-lg hover:bg-slate-200 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -616,14 +616,14 @@ const AdminDashboard = () => {
             </div>
 
             {/* Navigation Tabs */}
-            <div className="flex items-center border-b border-line bg-[#FAFAF8] px-5 pt-2 gap-2 overflow-x-auto flex-shrink-0">
+            <div className="flex items-center border-b border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 px-5 pt-2 gap-2 overflow-x-auto flex-shrink-0">
               <button
                 type="button"
                 onClick={() => setViewTab('overview')}
                 className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs font-semibold border-b-2 transition-all whitespace-nowrap ${
                   viewTab === 'overview'
                     ? 'border-green-700 text-green-700'
-                    : 'border-transparent text-slate-500 hover:text-navy-900'
+                    : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-navy-900 dark:text-slate-200'
                 }`}
               >
                 <User className="w-3.5 h-3.5" />
@@ -636,13 +636,13 @@ const AdminDashboard = () => {
                 className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs font-semibold border-b-2 transition-all whitespace-nowrap ${
                   viewTab === 'meals'
                     ? 'border-green-700 text-green-700'
-                    : 'border-transparent text-slate-500 hover:text-navy-900'
+                    : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-navy-900 dark:text-slate-200'
                 }`}
               >
                 <Utensils className="w-3.5 h-3.5" />
                 <span>Meals Logged</span>
                 {viewUser.meals && (
-                  <span className="ml-1 text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700">
+                  <span className="ml-1 text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700 dark:text-slate-200">
                     {viewUser.meals.length}
                   </span>
                 )}
@@ -654,13 +654,13 @@ const AdminDashboard = () => {
                 className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs font-semibold border-b-2 transition-all whitespace-nowrap ${
                   viewTab === 'water'
                     ? 'border-green-700 text-green-700'
-                    : 'border-transparent text-slate-500 hover:text-navy-900'
+                    : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-navy-900 dark:text-slate-200'
                 }`}
               >
                 <Droplets className="w-3.5 h-3.5" />
                 <span>Water Intake</span>
                 {viewUser.waterLogs && (
-                  <span className="ml-1 text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700">
+                  <span className="ml-1 text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700 dark:text-slate-200">
                     {viewUser.waterLogs.length}
                   </span>
                 )}
@@ -672,13 +672,13 @@ const AdminDashboard = () => {
                 className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs font-semibold border-b-2 transition-all whitespace-nowrap ${
                   viewTab === 'weight'
                     ? 'border-green-700 text-green-700'
-                    : 'border-transparent text-slate-500 hover:text-navy-900'
+                    : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-navy-900 dark:text-slate-200'
                 }`}
               >
                 <Scale className="w-3.5 h-3.5" />
                 <span>Weight History</span>
                 {viewUser.weightHistory && (
-                  <span className="ml-1 text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700">
+                  <span className="ml-1 text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700 dark:text-slate-200">
                     {viewUser.weightHistory.length}
                   </span>
                 )}
@@ -688,7 +688,7 @@ const AdminDashboard = () => {
             {/* Modal Body with Tab Content */}
             <div className="p-6 overflow-y-auto space-y-4 flex-1">
               {viewLoading ? (
-                <div className="py-12 text-center text-slate-500 space-y-2">
+                <div className="py-12 text-center text-slate-500 dark:text-slate-400 space-y-2">
                   <RefreshCw className="w-6 h-6 animate-spin mx-auto text-green-700" />
                   <p className="text-xs font-medium">Fetching latest fitness records...</p>
                 </div>
@@ -698,42 +698,42 @@ const AdminDashboard = () => {
                   {viewTab === 'overview' && (
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-                        <div className="p-3.5 rounded-xl border border-line bg-[#FAFAF8]">
+                        <div className="p-3.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900">
                           <span className="text-slate-400 uppercase font-mono block text-[10px]">Age</span>
-                          <span className="font-semibold text-navy-900 text-sm mt-0.5 block">
+                          <span className="font-semibold text-navy-900 dark:text-slate-200 text-sm mt-0.5 block">
                             {viewUser.age || 25} years
                           </span>
                         </div>
-                        <div className="p-3.5 rounded-xl border border-line bg-[#FAFAF8]">
+                        <div className="p-3.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900">
                           <span className="text-slate-400 uppercase font-mono block text-[10px]">Gender</span>
-                          <span className="font-semibold text-navy-900 text-sm mt-0.5 block">
+                          <span className="font-semibold text-navy-900 dark:text-slate-200 text-sm mt-0.5 block">
                             {viewUser.gender || 'Male'}
                           </span>
                         </div>
-                        <div className="p-3.5 rounded-xl border border-line bg-[#FAFAF8]">
+                        <div className="p-3.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900">
                           <span className="text-slate-400 uppercase font-mono block text-[10px]">Height</span>
-                          <span className="font-semibold text-navy-900 text-sm mt-0.5 block">
+                          <span className="font-semibold text-navy-900 dark:text-slate-200 text-sm mt-0.5 block">
                             {viewUser.height || 170} cm
                           </span>
                         </div>
-                        <div className="p-3.5 rounded-xl border border-line bg-[#FAFAF8]">
+                        <div className="p-3.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900">
                           <span className="text-slate-400 uppercase font-mono block text-[10px]">Current Weight</span>
-                          <span className="font-semibold text-navy-900 text-sm mt-0.5 block">
+                          <span className="font-semibold text-navy-900 dark:text-slate-200 text-sm mt-0.5 block">
                             {viewUser.weight || 70} kg
                           </span>
                         </div>
                       </div>
 
-                      <div className="p-4 rounded-xl border border-line bg-[#FAFAF8] space-y-2 text-xs">
+                      <div className="p-4 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 space-y-2 text-xs">
                         <div className="flex items-center justify-between">
                           <span className="text-slate-400 uppercase font-mono text-[10px]">Primary Fitness Goal</span>
                           <span className="font-bold text-green-700 bg-green-50 px-2.5 py-0.5 rounded-full border border-green-200">
                             {viewUser.fitnessGoal || 'Maintain Weight'}
                           </span>
                         </div>
-                        <div className="flex items-center justify-between pt-2 border-t border-line">
+                        <div className="flex items-center justify-between pt-2 border-t border-line dark:border-slate-700">
                           <span className="text-slate-400 uppercase font-mono text-[10px]">Registration Date</span>
-                          <span className="font-mono text-slate-700">
+                          <span className="font-mono text-slate-700 dark:text-slate-200">
                             {viewUser.createdAt ? new Date(viewUser.createdAt).toLocaleString() : 'N/A'}
                           </span>
                         </div>
@@ -747,19 +747,19 @@ const AdminDashboard = () => {
                       {!viewUser.meals || viewUser.meals.length === 0 ? (
                         <div className="py-8 text-center text-slate-400">
                           <Utensils className="w-8 h-8 mx-auto mb-2 text-slate-300" />
-                          <p className="font-semibold text-navy-900 text-xs">No meals logged yet</p>
-                          <p className="text-[11px] text-slate-500 mt-0.5">User has not recorded any meal entries.</p>
+                          <p className="font-semibold text-navy-900 dark:text-slate-200 text-xs">No meals logged yet</p>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">User has not recorded any meal entries.</p>
                         </div>
                       ) : (
                         <div className="space-y-2">
                           {viewUser.meals.map((meal) => (
                             <div
                               key={meal._id}
-                              className="p-3.5 rounded-xl border border-line bg-[#FAFAF8] flex items-center justify-between text-xs hover:border-slate-300 transition-colors"
+                              className="p-3.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 flex items-center justify-between text-xs hover:border-slate-300 transition-colors"
                             >
                               <div className="space-y-0.5">
                                 <div className="flex items-center space-x-2">
-                                  <span className="font-semibold text-navy-900 text-sm">{meal.foodName}</span>
+                                  <span className="font-semibold text-navy-900 dark:text-slate-200 text-sm">{meal.foodName}</span>
                                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                                     {meal.mealType}
                                   </span>
@@ -785,22 +785,22 @@ const AdminDashboard = () => {
                       {!viewUser.waterLogs || viewUser.waterLogs.length === 0 ? (
                         <div className="py-8 text-center text-slate-400">
                           <Droplets className="w-8 h-8 mx-auto mb-2 text-slate-300" />
-                          <p className="font-semibold text-navy-900 text-xs">No water intake logged yet</p>
-                          <p className="text-[11px] text-slate-500 mt-0.5">User has not logged hydration entries.</p>
+                          <p className="font-semibold text-navy-900 dark:text-slate-200 text-xs">No water intake logged yet</p>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">User has not logged hydration entries.</p>
                         </div>
                       ) : (
                         <div className="space-y-2">
                           {viewUser.waterLogs.map((log) => (
                             <div
                               key={log._id}
-                              className="p-3.5 rounded-xl border border-line bg-[#FAFAF8] flex items-center justify-between text-xs hover:border-slate-300 transition-colors"
+                              className="p-3.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 flex items-center justify-between text-xs hover:border-slate-300 transition-colors"
                             >
                               <div className="flex items-center space-x-2.5">
                                 <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
                                   <Droplets className="w-4 h-4" />
                                 </div>
                                 <div>
-                                  <span className="font-semibold text-navy-900 block text-sm">
+                                  <span className="font-semibold text-navy-900 dark:text-slate-200 block text-sm">
                                     {log.amount} ml
                                   </span>
                                   <span className="text-[11px] text-slate-400 font-mono">
@@ -808,7 +808,7 @@ const AdminDashboard = () => {
                                   </span>
                                 </div>
                               </div>
-                              <span className="text-[11px] font-mono text-slate-500 bg-white px-2 py-1 rounded border border-line">
+                              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-1 rounded border border-line dark:border-slate-700">
                                 {log.createdAt ? new Date(log.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
                               </span>
                             </div>
@@ -824,22 +824,22 @@ const AdminDashboard = () => {
                       {!viewUser.weightHistory || viewUser.weightHistory.length === 0 ? (
                         <div className="py-8 text-center text-slate-400">
                           <Scale className="w-8 h-8 mx-auto mb-2 text-slate-300" />
-                          <p className="font-semibold text-navy-900 text-xs">No weight records logged yet</p>
-                          <p className="text-[11px] text-slate-500 mt-0.5">User has not logged historical weight data.</p>
+                          <p className="font-semibold text-navy-900 dark:text-slate-200 text-xs">No weight records logged yet</p>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">User has not logged historical weight data.</p>
                         </div>
                       ) : (
                         <div className="space-y-2">
                           {viewUser.weightHistory.map((item) => (
                             <div
                               key={item._id}
-                              className="p-3.5 rounded-xl border border-line bg-[#FAFAF8] flex items-center justify-between text-xs hover:border-slate-300 transition-colors"
+                              className="p-3.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 flex items-center justify-between text-xs hover:border-slate-300 transition-colors"
                             >
                               <div className="flex items-center space-x-2.5">
                                 <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
                                   <Scale className="w-4 h-4" />
                                 </div>
                                 <div>
-                                  <span className="font-semibold text-navy-900 block text-sm">
+                                  <span className="font-semibold text-navy-900 dark:text-slate-200 block text-sm">
                                     {item.weight} kg
                                   </span>
                                   <span className="text-[11px] text-slate-400 font-mono">
@@ -847,7 +847,7 @@ const AdminDashboard = () => {
                                   </span>
                                 </div>
                               </div>
-                              <span className="text-[11px] font-mono text-slate-500 bg-white px-2 py-1 rounded border border-line">
+                              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-1 rounded border border-line dark:border-slate-700">
                                 {item.createdAt ? new Date(item.createdAt).toLocaleDateString() : ''}
                               </span>
                             </div>
@@ -861,10 +861,10 @@ const AdminDashboard = () => {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-line bg-slate-50 text-right flex-shrink-0">
+            <div className="p-4 border-t border-line dark:border-slate-700 bg-slate-50 text-right flex-shrink-0">
               <button
                 onClick={() => setViewUser(null)}
-                className="px-4 py-2 bg-white border border-line hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl transition-colors"
+                className="px-4 py-2 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs rounded-xl transition-colors"
               >
                 Close
               </button>
@@ -878,18 +878,18 @@ const AdminDashboard = () => {
       {/* ========================================================= */}
       {editUser && (
         <div className="fixed inset-0 bg-navy-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-line shadow-xl max-w-lg w-full overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xl max-w-lg w-full overflow-hidden animate-in fade-in zoom-in-95 duration-150">
             {/* Header */}
-            <div className="p-5 border-b border-line flex items-center justify-between bg-slate-50">
+            <div className="p-5 border-b border-line dark:border-slate-700 flex items-center justify-between bg-slate-50">
               <div className="flex items-center space-x-2.5">
                 <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center">
                   <Edit2 className="w-4 h-4" />
                 </div>
-                <h3 className="font-sora font-bold text-base text-navy-900">Edit User Information</h3>
+                <h3 className="font-sora font-bold text-base text-navy-900 dark:text-slate-200">Edit User Information</h3>
               </div>
               <button
                 onClick={() => setEditUser(null)}
-                className="text-slate-400 hover:text-navy-900 p-1 rounded-lg"
+                className="text-slate-400 hover:text-navy-900 dark:text-slate-200 p-1 rounded-lg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -915,7 +915,7 @@ const AdminDashboard = () => {
                     required
                     value={editFormData.name}
                     onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                   />
                 </div>
 
@@ -928,7 +928,7 @@ const AdminDashboard = () => {
                     required
                     value={editFormData.email}
                     onChange={(e) => setEditFormData({ ...editFormData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                   />
                 </div>
 
@@ -943,7 +943,7 @@ const AdminDashboard = () => {
                       max="120"
                       value={editFormData.age}
                       onChange={(e) => setEditFormData({ ...editFormData, age: Number(e.target.value) })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                     />
                   </div>
 
@@ -954,7 +954,7 @@ const AdminDashboard = () => {
                     <select
                       value={editFormData.gender}
                       onChange={(e) => setEditFormData({ ...editFormData, gender: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200 cursor-pointer"
                     >
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
@@ -976,7 +976,7 @@ const AdminDashboard = () => {
                       max="250"
                       value={editFormData.height}
                       onChange={(e) => setEditFormData({ ...editFormData, height: Number(e.target.value) })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                     />
                   </div>
 
@@ -991,7 +991,7 @@ const AdminDashboard = () => {
                       max="300"
                       value={editFormData.weight}
                       onChange={(e) => setEditFormData({ ...editFormData, weight: Number(e.target.value) })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200"
                     />
                   </div>
                 </div>
@@ -1003,7 +1003,7 @@ const AdminDashboard = () => {
                   <select
                     value={editFormData.fitnessGoal}
                     onChange={(e) => setEditFormData({ ...editFormData, fitnessGoal: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-line bg-[#FAFAF8] focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm text-navy-900 dark:text-slate-200 cursor-pointer"
                   >
                     <option value="Lose Weight">Lose Weight</option>
                     <option value="Maintain Weight">Maintain Weight</option>
@@ -1014,11 +1014,11 @@ const AdminDashboard = () => {
               </div>
 
               {/* Footer */}
-              <div className="p-4 border-t border-line bg-slate-50 flex items-center justify-end space-x-2">
+              <div className="p-4 border-t border-line dark:border-slate-700 bg-slate-50 flex items-center justify-end space-x-2">
                 <button
                   type="button"
                   onClick={() => setEditUser(null)}
-                  className="px-4 py-2 bg-white border border-line hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl transition-colors"
+                  className="px-4 py-2 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs rounded-xl transition-colors"
                 >
                   Cancel
                 </button>
@@ -1040,7 +1040,7 @@ const AdminDashboard = () => {
       {/* ========================================================= */}
       {statusToggleUser && (
         <div className="fixed inset-0 bg-navy-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-line shadow-xl max-w-md w-full p-6 space-y-4 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xl max-w-md w-full p-6 space-y-4 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center space-x-3">
               <div
                 className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
@@ -1052,19 +1052,19 @@ const AdminDashboard = () => {
                 <Power className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-sora font-bold text-base text-navy-900">
+                <h3 className="font-sora font-bold text-base text-navy-900 dark:text-slate-200">
                   {statusToggleUser.status === 'active' ? 'Deactivate User Account' : 'Activate User Account'}
                 </h3>
-                <p className="text-xs text-slate-500">Confirm status change</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Confirm status change</p>
               </div>
             </div>
 
             <p className="text-sm text-slate-600">
               Are you sure you want to{' '}
-              <strong className="text-navy-900">
+              <strong className="text-navy-900 dark:text-slate-200">
                 {statusToggleUser.status === 'active' ? 'deactivate' : 'activate'}
               </strong>{' '}
-              the account for <strong className="text-navy-900">{statusToggleUser.name}</strong> ({statusToggleUser.email})?
+              the account for <strong className="text-navy-900 dark:text-slate-200">{statusToggleUser.name}</strong> ({statusToggleUser.email})?
             </p>
 
             {statusToggleUser.status === 'active' && (
@@ -1077,7 +1077,7 @@ const AdminDashboard = () => {
               <button
                 type="button"
                 onClick={() => setStatusToggleUser(null)}
-                className="px-4 py-2 bg-white border border-line hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl transition-colors"
+                className="px-4 py-2 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs rounded-xl transition-colors"
               >
                 Cancel
               </button>
@@ -1103,7 +1103,7 @@ const AdminDashboard = () => {
       {/* ========================================================= */}
       {deleteTargetUser && (
         <div className="fixed inset-0 bg-navy-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-line shadow-xl max-w-md w-full p-6 space-y-4 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-line dark:border-slate-700 shadow-xl max-w-md w-full p-6 space-y-4 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0">
                 <ShieldAlert className="w-5 h-5" />
@@ -1115,7 +1115,7 @@ const AdminDashboard = () => {
             </div>
 
             <p className="text-sm text-slate-600">
-              Are you sure you want to delete <strong className="text-navy-900">{deleteTargetUser.name}</strong> ({deleteTargetUser.email})?
+              Are you sure you want to delete <strong className="text-navy-900 dark:text-slate-200">{deleteTargetUser.name}</strong> ({deleteTargetUser.email})?
             </p>
 
             <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs">
@@ -1126,7 +1126,7 @@ const AdminDashboard = () => {
               <button
                 type="button"
                 onClick={() => setDeleteTargetUser(null)}
-                className="px-4 py-2 bg-white border border-line hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl transition-colors"
+                className="px-4 py-2 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs rounded-xl transition-colors"
               >
                 Cancel
               </button>

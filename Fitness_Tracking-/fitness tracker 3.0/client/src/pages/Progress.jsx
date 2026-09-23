@@ -101,7 +101,7 @@ const Progress = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center space-y-3">
           <div className="w-10 h-10 border-4 border-green-700 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="text-slate-500 font-medium text-sm">Loading your progression...</p>
+          <p className="text-slate-500 dark:text-slate-400 font-medium text-sm">Loading your progression...</p>
         </div>
       </div>
     );
@@ -175,19 +175,19 @@ const Progress = () => {
         backgroundColor: '#0F151C',
         padding: 12,
         titleFont: { family: 'Sora', size: 12 },
-        bodyFont: { family: 'IBM Plex Mono', size: 12 },
+        bodyFont: { family: 'Inter', size: 12 },
         cornerRadius: 10,
         displayColors: true
       }
     },
     scales: {
       x: {
-        grid: { color: '#E3E9E4', drawBorder: false },
+        grid: { color: 'rgba(148, 163, 184, 0.15)', drawBorder: false },
         ticks: { font: { family: 'Inter', size: 11 }, color: '#68737E' }
       },
       y: {
-        grid: { color: '#E3E9E4', drawBorder: false },
-        ticks: { font: { family: 'IBM Plex Mono', size: 11 }, color: '#68737E' }
+        grid: { color: 'rgba(148, 163, 184, 0.15)', drawBorder: false },
+        ticks: { font: { family: 'Inter', size: 11 }, color: '#68737E' }
       }
     }
   };
@@ -234,7 +234,7 @@ const Progress = () => {
         backgroundColor: '#0F151C',
         padding: 10,
         titleFont: { family: 'Sora', size: 12 },
-        bodyFont: { family: 'IBM Plex Mono', size: 12 },
+        bodyFont: { family: 'Inter', size: 12 },
         cornerRadius: 10
       }
     },
@@ -245,8 +245,8 @@ const Progress = () => {
       },
       y: {
         suggestedMax: 3.0,
-        grid: { color: '#E3E9E4', drawBorder: false },
-        ticks: { font: { family: 'IBM Plex Mono', size: 11 }, color: '#68737E' }
+        grid: { color: 'rgba(148, 163, 184, 0.15)', drawBorder: false },
+        ticks: { font: { family: 'Inter', size: 11 }, color: '#68737E' }
       }
     }
   };
@@ -293,7 +293,7 @@ const Progress = () => {
         backgroundColor: '#0F151C',
         padding: 10,
         titleFont: { family: 'Sora', size: 12 },
-        bodyFont: { family: 'IBM Plex Mono', size: 12 },
+        bodyFont: { family: 'Inter', size: 12 },
         cornerRadius: 10
       }
     },
@@ -304,8 +304,8 @@ const Progress = () => {
       },
       y: {
         suggestedMax: 2500,
-        grid: { color: '#E3E9E4', drawBorder: false },
-        ticks: { font: { family: 'IBM Plex Mono', size: 11 }, color: '#68737E' }
+        grid: { color: 'rgba(148, 163, 184, 0.15)', drawBorder: false },
+        ticks: { font: { family: 'Inter', size: 11 }, color: '#68737E' }
       }
     }
   };
@@ -317,23 +317,23 @@ const Progress = () => {
           ================================================== */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 tracking-tight">
+          <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 dark:text-slate-200 tracking-tight">
             Your Progression
           </h1>
-          <p className="text-xs md:text-sm text-slate-500 mt-1">
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Track your health and fitness progress over time.
           </p>
         </div>
 
         {/* Filters: [ Last 7 Days ] [ Last 4 Weeks ] and [ 📅 Select Date ] */}
         <div className="flex flex-wrap items-center gap-2.5">
-          <div className="inline-flex bg-white p-1 rounded-xl border border-line shadow-xs font-inter text-xs">
+          <div className="inline-flex bg-white dark:bg-slate-800 p-1 rounded-xl border border-line dark:border-slate-700 shadow-xs font-inter text-xs">
             <button
               onClick={() => setRange('7days')}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 range === '7days'
                   ? 'bg-green-700 text-white shadow-xs font-semibold'
-                  : 'text-slate-600 hover:text-navy-900 hover:bg-slate-50'
+                  : 'text-slate-600 hover:text-navy-900 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700'
               }`}
             >
               Last 7 Days
@@ -343,7 +343,7 @@ const Progress = () => {
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 range === '4weeks'
                   ? 'bg-green-700 text-white shadow-xs font-semibold'
-                  : 'text-slate-600 hover:text-navy-900 hover:bg-slate-50'
+                  : 'text-slate-600 hover:text-navy-900 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700'
               }`}
             >
               Last 4 Weeks
@@ -351,8 +351,8 @@ const Progress = () => {
           </div>
 
           {/* Functional Date Selector */}
-          <div className="relative inline-flex items-center bg-white border border-line rounded-xl px-3.5 py-2 shadow-xs hover:border-green-600 transition-all font-mono text-xs text-navy-900 group">
-            <Calendar className="w-3.5 h-3.5 text-green-700 mr-2" />
+          <div className="relative inline-flex items-center bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-xl px-3.5 py-2 shadow-sm hover:border-emerald-600 dark:hover:border-emerald-500 transition-all font-inter text-xs text-navy-900 dark:text-slate-200 group">
+            <Calendar className="w-3.5 h-3.5 text-emerald-700 mr-2" />
             <span className="font-medium mr-2">{formatDisplayDate(selectedDate)}</span>
             <input
               type="date"
@@ -370,19 +370,19 @@ const Progress = () => {
       {/* ==================================================
           12. WEIGHT PROGRESSION CHART (CHART.JS)
           ================================================== */}
-      <div className="bg-white rounded-[16px] p-6 border border-line shadow-xs space-y-6">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-line dark:border-slate-700 shadow-sm space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="font-sora font-bold text-navy-900 text-lg">Weight Progress</h3>
-            <p className="text-xs text-slate-500">Historical trend compared against target weight</p>
+            <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-lg">Weight Progress</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Historical trend compared against target weight</p>
           </div>
 
-          <div className="flex items-center space-x-3 text-xs font-mono">
+          <div className="flex items-center space-x-3 text-xs font-inter">
             <span className="flex items-center space-x-1.5 text-slate-600">
               <span className="w-3 h-3 rounded-full bg-green-700 inline-block" />
               <span>Actual Weight</span>
             </span>
-            <span className="flex items-center space-x-1.5 text-slate-500">
+            <span className="flex items-center space-x-1.5 text-slate-500 dark:text-slate-400">
               <span className="w-3 h-1 border-t-2 border-dashed border-slate-400 inline-block" />
               <span>Goal Weight</span>
             </span>
@@ -395,32 +395,32 @@ const Progress = () => {
         </div>
 
         {/* Four Dedicated Values Below Chart */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 pt-4 border-t border-line">
-          <div className="p-3.5 bg-[#FAFAF8] rounded-xl border border-line text-center">
-            <span className="text-[11px] font-mono font-semibold text-slate-500 uppercase block mb-0.5">Current</span>
-            <span className="font-mono text-lg font-bold text-navy-900">{summary.currentWeight} kg</span>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 pt-4 border-t border-line dark:border-slate-700">
+          <div className="p-3.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700 text-center">
+            <span className="text-[11px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block mb-0.5">Current</span>
+            <span className="font-inter text-lg font-bold text-navy-900 dark:text-slate-200">{summary.currentWeight} kg</span>
           </div>
 
-          <div className="p-3.5 bg-[#FAFAF8] rounded-xl border border-line text-center">
-            <span className="text-[11px] font-mono font-semibold text-slate-500 uppercase block mb-0.5">Goal</span>
-            <span className="font-mono text-lg font-bold text-navy-900">{summary.goalWeight} kg</span>
+          <div className="p-3.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700 text-center">
+            <span className="text-[11px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block mb-0.5">Goal</span>
+            <span className="font-inter text-lg font-bold text-navy-900 dark:text-slate-200">{summary.goalWeight} kg</span>
           </div>
 
-          <div className="p-3.5 bg-[#FAFAF8] rounded-xl border border-line text-center">
-            <span className="text-[11px] font-mono font-semibold text-slate-500 uppercase block mb-0.5">Starting</span>
-            <span className="font-mono text-lg font-bold text-navy-900">{summary.startingWeight} kg</span>
+          <div className="p-3.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700 text-center">
+            <span className="text-[11px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block mb-0.5">Starting</span>
+            <span className="font-inter text-lg font-bold text-navy-900 dark:text-slate-200">{summary.startingWeight} kg</span>
           </div>
 
-          <div className="p-3.5 bg-green-50 rounded-xl border border-green-200 text-center">
-            <span className="text-[11px] font-mono font-semibold text-green-700 uppercase block mb-0.5">To Go</span>
-            <span className="font-mono text-lg font-bold text-green-800">{summary.toGo} kg</span>
+          <div className="p-3.5 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl border border-green-200 dark:border-emerald-500/30 text-center">
+            <span className="text-[11px] font-inter font-semibold text-emerald-700 dark:text-emerald-400 uppercase block mb-0.5">To Go</span>
+            <span className="font-inter text-lg font-bold text-emerald-800 dark:text-emerald-400">{summary.toGo} kg</span>
           </div>
 
-          <div className="col-span-2 sm:col-span-4 lg:col-span-1 p-3.5 bg-[#FAFAF8] rounded-xl border border-line text-center flex flex-col justify-center">
-            <span className="text-[11px] font-mono font-semibold text-slate-500 uppercase block mb-0.5">Weight Trend</span>
-            <div className="flex items-center justify-center space-x-1 font-mono text-sm font-bold text-green-700">
+          <div className="col-span-2 sm:col-span-4 lg:col-span-1 p-3.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700 text-center flex flex-col justify-center">
+            <span className="text-[11px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block mb-0.5">Weight Trend</span>
+            <div className="flex items-center justify-center space-x-1 font-inter text-sm font-bold text-emerald-700">
               {summary.weightTrend <= 0 ? (
-                <ArrowDownRight className="w-4 h-4 text-green-600" />
+                <ArrowDownRight className="w-4 h-4 text-emerald-600" />
               ) : (
                 <ArrowUpRight className="w-4 h-4 text-amber-600" />
               )}
@@ -435,15 +435,15 @@ const Progress = () => {
           ================================================== */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* 13. Water Intake Chart */}
-        <div className="bg-white rounded-[16px] p-6 border border-line shadow-xs space-y-5">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-line dark:border-slate-700 shadow-sm space-y-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2.5">
               <div className="p-2 rounded-xl bg-sky-100 text-sky-700">
                 <Droplet className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-sora font-bold text-navy-900 text-base">Water Intake</h3>
-                <span className="text-xs text-slate-500">Target: {summary.goalWater} L/day</span>
+                <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base">Water Intake</h3>
+                <span className="text-xs text-slate-500 dark:text-slate-400">Target: {summary.goalWater} L/day</span>
               </div>
             </div>
           </div>
@@ -453,32 +453,32 @@ const Progress = () => {
           </div>
 
           {/* Water Stats Below */}
-          <div className="grid grid-cols-3 gap-2 pt-3 border-t border-line text-center">
-            <div className="p-2.5 bg-[#FAFAF8] rounded-xl border border-line">
-              <span className="text-[10px] font-mono font-semibold text-slate-500 uppercase block">Average</span>
-              <span className="font-mono text-sm font-bold text-navy-900">{summary.avgWater} L/day</span>
+          <div className="grid grid-cols-3 gap-2 pt-3 border-t border-line dark:border-slate-700 text-center">
+            <div className="p-2.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700">
+              <span className="text-[10px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block">Average</span>
+              <span className="font-inter text-sm font-bold text-navy-900 dark:text-slate-200">{summary.avgWater} L/day</span>
             </div>
-            <div className="p-2.5 bg-[#FAFAF8] rounded-xl border border-line">
-              <span className="text-[10px] font-mono font-semibold text-slate-500 uppercase block">Goal</span>
-              <span className="font-mono text-sm font-bold text-navy-900">{summary.goalWater} L/day</span>
+            <div className="p-2.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700">
+              <span className="text-[10px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block">Goal</span>
+              <span className="font-inter text-sm font-bold text-navy-900 dark:text-slate-200">{summary.goalWater} L/day</span>
             </div>
             <div className="p-2.5 bg-sky-50 rounded-xl border border-sky-200">
-              <span className="text-[10px] font-mono font-semibold text-sky-700 uppercase block">Completion</span>
-              <span className="font-mono text-sm font-bold text-sky-800">{summary.waterCompletion}%</span>
+              <span className="text-[10px] font-inter font-semibold text-sky-700 uppercase block">Completion</span>
+              <span className="font-inter text-sm font-bold text-sky-800">{summary.waterCompletion}%</span>
             </div>
           </div>
         </div>
 
         {/* 14. Calorie Intake Chart */}
-        <div className="bg-white rounded-[16px] p-6 border border-line shadow-xs space-y-5">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-line dark:border-slate-700 shadow-sm space-y-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2.5">
               <div className="p-2 rounded-xl bg-amber-100 text-amber-700">
                 <Flame className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-sora font-bold text-navy-900 text-base">Calorie Intake</h3>
-                <span className="text-xs text-slate-500">Target: {summary.goalCalories.toLocaleString()} kcal/day</span>
+                <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base">Calorie Intake</h3>
+                <span className="text-xs text-slate-500 dark:text-slate-400">Target: {summary.goalCalories.toLocaleString()} kcal/day</span>
               </div>
             </div>
           </div>
@@ -488,14 +488,14 @@ const Progress = () => {
           </div>
 
           {/* Calorie Stats Below */}
-          <div className="grid grid-cols-2 gap-2 pt-3 border-t border-line text-center">
-            <div className="p-2.5 bg-[#FAFAF8] rounded-xl border border-line">
-              <span className="text-[10px] font-mono font-semibold text-slate-500 uppercase block">Average</span>
-              <span className="font-mono text-sm font-bold text-navy-900">{summary.avgCalories.toLocaleString()} kcal/day</span>
+          <div className="grid grid-cols-2 gap-2 pt-3 border-t border-line dark:border-slate-700 text-center">
+            <div className="p-2.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700">
+              <span className="text-[10px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block">Average</span>
+              <span className="font-inter text-sm font-bold text-navy-900 dark:text-slate-200">{summary.avgCalories.toLocaleString()} kcal/day</span>
             </div>
-            <div className="p-2.5 bg-[#FAFAF8] rounded-xl border border-line">
-              <span className="text-[10px] font-mono font-semibold text-slate-500 uppercase block">Goal</span>
-              <span className="font-mono text-sm font-bold text-navy-900">{summary.goalCalories.toLocaleString()} kcal/day</span>
+            <div className="p-2.5 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700">
+              <span className="text-[10px] font-inter font-semibold text-slate-500 dark:text-slate-400 uppercase block">Goal</span>
+              <span className="font-inter text-sm font-bold text-navy-900 dark:text-slate-200">{summary.goalCalories.toLocaleString()} kcal/day</span>
             </div>
           </div>
         </div>
@@ -525,16 +525,16 @@ const Progress = () => {
           : 0;
 
         return (
-          <section className="bg-white rounded-[16px] p-6 border border-line shadow-xs space-y-4">
+          <section className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-line dark:border-slate-700 shadow-sm space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="flex items-center space-x-2">
-                  <h3 className="font-sora font-bold text-navy-900 text-xl">History</h3>
-                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 bg-green-100 text-green-700 rounded-full">
+                  <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-xl">History</h3>
+                  <span className="font-inter text-xs font-bold px-2.5 py-0.5 bg-emerald-100 text-emerald-700 rounded-full">
                     WEEK VIEW
                   </span>
                 </div>
-                <p className="text-xs md:text-sm text-slate-500 mt-0.5">
+                <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
                   Showing 7-day weekly log chunks for easy review and sorting.
                 </p>
               </div>
@@ -545,26 +545,26 @@ const Progress = () => {
                 <button
                   type="button"
                   onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 bg-[#FAFAF8] hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl border border-line shadow-xs transition-colors"
+                  className="flex items-center space-x-1.5 px-3 py-1.5 bg-[#FAFAF8] dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs rounded-xl border border-line dark:border-slate-700 shadow-xs transition-colors"
                   title="Toggle Sort Order"
                 >
-                  <ArrowUpDown className="w-3.5 h-3.5 text-slate-500" />
+                  <ArrowUpDown className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                   <span>{sortOrder === 'desc' ? 'Newest First' : 'Oldest First'}</span>
                 </button>
 
                 {/* Week Pagination */}
-                <div className="flex items-center space-x-1 bg-[#FAFAF8] border border-line p-1 rounded-xl shadow-xs">
+                <div className="flex items-center space-x-1 bg-white/80 dark:bg-slate-900/50 border border-white/80 dark:border-white/10 shadow-inner p-1 rounded-xl shadow-xs">
                   <button
                     type="button"
                     onClick={() => setCurrentWeekPage((prev) => Math.max(0, prev - 1))}
                     disabled={activeWeek === 0}
-                    className="p-1.5 text-slate-600 hover:text-navy-900 disabled:opacity-30 disabled:hover:text-slate-600 rounded-lg hover:bg-white transition-colors"
+                    className="p-1.5 text-slate-600 hover:text-navy-900 dark:text-slate-200 disabled:opacity-30 disabled:hover:text-slate-600 rounded-lg hover:bg-white dark:hover:bg-slate-700 transition-colors"
                     title="Previous Week"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
 
-                  <span className="font-mono text-xs font-semibold px-2.5 text-navy-900 whitespace-nowrap">
+                  <span className="font-inter text-xs font-semibold px-2.5 text-navy-900 dark:text-slate-200 whitespace-nowrap">
                     Week {activeWeek + 1} of {totalWeeks}
                   </span>
 
@@ -572,7 +572,7 @@ const Progress = () => {
                     type="button"
                     onClick={() => setCurrentWeekPage((prev) => Math.min(totalWeeks - 1, prev + 1))}
                     disabled={activeWeek >= totalWeeks - 1}
-                    className="p-1.5 text-slate-600 hover:text-navy-900 disabled:opacity-30 disabled:hover:text-slate-600 rounded-lg hover:bg-white transition-colors"
+                    className="p-1.5 text-slate-600 hover:text-navy-900 dark:text-slate-200 disabled:opacity-30 disabled:hover:text-slate-600 rounded-lg hover:bg-white dark:hover:bg-slate-700 transition-colors"
                     title="Next Week"
                   >
                     <ChevronRight className="w-4 h-4" />
@@ -583,19 +583,19 @@ const Progress = () => {
 
             {/* Week Summary Badge Ribbon */}
             {currentWeekRecords.length > 0 && (
-              <div className="flex flex-wrap items-center gap-3 p-3 bg-[#FAFAF8] rounded-xl border border-line text-xs font-inter">
-                <span className="font-mono font-semibold text-slate-500">
+              <div className="flex flex-wrap items-center gap-3 p-3 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700 text-xs font-inter">
+                <span className="font-inter font-semibold text-slate-500 dark:text-slate-400">
                   📅 {currentWeekRecords[0]?.formattedDate} – {currentWeekRecords[currentWeekRecords.length - 1]?.formattedDate}
                 </span>
                 <span className="text-slate-300">|</span>
                 <span className="text-slate-600">
-                  Avg Water: <strong className="font-mono text-sky-700">{weekWaterAvg} L/day</strong>
+                  Avg Water: <strong className="font-inter text-sky-700">{weekWaterAvg} L/day</strong>
                 </span>
                 <span className="text-slate-300">|</span>
                 <span className="text-slate-600">
-                  Avg Calories: <strong className="font-mono text-amber-700">{weekCalAvg.toLocaleString()} kcal/day</strong>
+                  Avg Calories: <strong className="font-inter text-amber-700">{weekCalAvg.toLocaleString()} kcal/day</strong>
                 </span>
-                <span className="ml-auto font-mono text-[11px] text-slate-400">
+                <span className="ml-auto font-inter text-[11px] text-slate-400">
                   ({currentWeekRecords.length} days in this view)
                 </span>
               </div>
@@ -604,7 +604,7 @@ const Progress = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse font-inter text-xs">
                 <thead>
-                  <tr className="border-b border-line bg-[#FAFAF8] text-slate-500 font-mono text-[11px] uppercase tracking-wider">
+                  <tr className="border-b border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 text-slate-500 dark:text-slate-400 font-inter text-[11px] uppercase tracking-wider">
                     <th className="py-3.5 px-4 font-semibold">Date</th>
                     <th className="py-3.5 px-4 font-semibold">Weight</th>
                     <th className="py-3.5 px-4 font-semibold">Water</th>
@@ -613,20 +613,20 @@ const Progress = () => {
                     <th className="py-3.5 px-4 font-semibold text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-line/70">
+                <tbody className="divide-y divide-line/70 dark:divide-slate-700/70">
                   {currentWeekRecords.length > 0 ? (
                     currentWeekRecords.map((row) => (
-                      <tr key={row.date} className="hover:bg-slate-50/80 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-semibold text-navy-900 whitespace-nowrap">
+                      <tr key={row.date} className="hover:bg-slate-50/80 dark:hover:bg-slate-700/50 transition-colors">
+                        <td className="py-3.5 px-4 font-inter font-semibold text-navy-900 dark:text-slate-200 whitespace-nowrap">
                           {row.formattedDate}
                         </td>
-                        <td className="py-3.5 px-4 font-mono font-medium text-slate-700 whitespace-nowrap">
+                        <td className="py-3.5 px-4 font-inter font-medium text-slate-700 dark:text-slate-200 whitespace-nowrap">
                           {row.weight}
                         </td>
-                        <td className="py-3.5 px-4 font-mono font-medium text-sky-700 whitespace-nowrap">
+                        <td className="py-3.5 px-4 font-inter font-medium text-sky-700 whitespace-nowrap">
                           {row.water}
                         </td>
-                        <td className="py-3.5 px-4 font-mono font-medium text-amber-700 whitespace-nowrap">
+                        <td className="py-3.5 px-4 font-inter font-medium text-amber-700 whitespace-nowrap">
                           {row.calories}
                         </td>
                         <td className="py-3.5 px-4 font-medium text-slate-600 whitespace-nowrap">
@@ -635,7 +635,7 @@ const Progress = () => {
                         <td className="py-3.5 px-4 text-right whitespace-nowrap">
                           <button
                             onClick={() => handleViewDayDetails(row)}
-                            className="inline-flex items-center space-x-1 px-3 py-1.5 bg-green-50 hover:bg-green-100 text-green-700 font-semibold text-xs rounded-lg transition-colors border border-green-200"
+                            className="inline-flex items-center space-x-1 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold text-xs rounded-lg transition-colors border border-green-200"
                           >
                             <Eye className="w-3.5 h-3.5" />
                             <span>View Details</span>
@@ -668,10 +668,10 @@ const Progress = () => {
         >
           <div className="space-y-5">
             {/* Quick Metrics Header */}
-            <div className="grid grid-cols-3 gap-2 text-center font-mono">
-              <div className="p-3 bg-[#FAFAF8] rounded-xl border border-line">
-                <span className="text-[10px] text-slate-500 uppercase block">Weight</span>
-                <span className="text-sm font-bold text-navy-900">{selectedDayDetails.weight}</span>
+            <div className="grid grid-cols-3 gap-2 text-center font-inter">
+              <div className="p-3 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase block">Weight</span>
+                <span className="text-sm font-bold text-navy-900 dark:text-slate-200">{selectedDayDetails.weight}</span>
               </div>
               <div className="p-3 bg-sky-50 rounded-xl border border-sky-200">
                 <span className="text-[10px] text-sky-700 uppercase block">Water</span>
@@ -686,29 +686,29 @@ const Progress = () => {
             {/* Meals Detailed Breakdown */}
             <div>
               <div className="flex items-center space-x-2 mb-2.5">
-                <Utensils className="w-4 h-4 text-green-700" />
-                <h4 className="font-sora font-bold text-navy-900 text-sm">Meals Logged</h4>
+                <Utensils className="w-4 h-4 text-emerald-700" />
+                <h4 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-sm">Meals Logged</h4>
               </div>
 
               {selectedDayDetails.meals && selectedDayDetails.meals.length > 0 ? (
-                <div className="divide-y divide-line/70 bg-[#FAFAF8] rounded-xl border border-line px-3.5 py-1">
+                <div className="divide-y divide-line/70 dark:divide-slate-700/70 bg-[#FAFAF8] dark:bg-slate-900 rounded-xl border border-line dark:border-slate-700 px-3.5 py-1">
                   {selectedDayDetails.meals.map((meal, idx) => (
                     <div key={idx} className="py-2.5 flex items-center justify-between">
                       <div>
-                        <span className="text-[10px] font-mono font-bold text-green-700 uppercase block">
+                        <span className="text-[10px] font-inter font-bold text-emerald-700 uppercase block">
                           {meal.mealType}
                         </span>
-                        <span className="text-xs font-semibold text-navy-900">{meal.foodName}</span>
+                        <span className="text-xs font-semibold text-navy-900 dark:text-slate-200">{meal.foodName}</span>
                         {meal.quantity && (
-                          <span className="text-[11px] text-slate-500 ml-2 font-normal">({meal.quantity})</span>
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400 ml-2 font-normal">({meal.quantity})</span>
                         )}
                       </div>
-                      <span className="font-mono text-xs font-bold text-navy-900">{meal.calories} kcal</span>
+                      <span className="font-inter text-xs font-bold text-navy-900 dark:text-slate-200">{meal.calories} kcal</span>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-slate-400 italic bg-[#FAFAF8] p-3 rounded-xl border border-dashed border-line">
+                <p className="text-xs text-slate-400 italic bg-[#FAFAF8] dark:bg-slate-900 p-3 rounded-xl border border-dashed border-line dark:border-slate-700">
                   No individual meals logged for this day.
                 </p>
               )}
@@ -719,11 +719,11 @@ const Progress = () => {
               <div>
                 <div className="flex items-center space-x-2 mb-2.5">
                   <Droplet className="w-4 h-4 text-sky-600" />
-                  <h4 className="font-sora font-bold text-navy-900 text-sm">Hydration Logs</h4>
+                  <h4 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-sm">Hydration Logs</h4>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {selectedDayDetails.waterLogs.map((log, idx) => (
-                    <div key={idx} className="p-2 bg-sky-50 rounded-lg border border-sky-100 text-center font-mono text-xs text-sky-800 font-semibold">
+                    <div key={idx} className="p-2 bg-sky-50 rounded-lg border border-sky-100 text-center font-inter text-xs text-sky-800 font-semibold">
                       +{log.amount} ml
                     </div>
                   ))}

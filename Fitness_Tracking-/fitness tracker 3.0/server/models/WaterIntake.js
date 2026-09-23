@@ -4,7 +4,8 @@ const waterIntakeSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
+    index: true
   },
   amount: {
     type: Number, // in ml
@@ -21,5 +22,8 @@ const waterIntakeSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+// Compound index for fast queries by user and date
+waterIntakeSchema.index({ userId: 1, date: -1 });
 
 module.exports = mongoose.model('WaterIntake', waterIntakeSchema);

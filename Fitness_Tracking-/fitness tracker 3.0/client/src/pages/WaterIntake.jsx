@@ -80,25 +80,25 @@ const WaterIntake = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 flex items-center space-x-2.5">
+          <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 dark:text-slate-200 flex items-center space-x-2.5">
             <div className="p-2 rounded-[10px] bg-sky-100 text-sky-700">
               <Droplet className="w-6 h-6" />
             </div>
             <span>Water Intake Tracker</span>
           </h1>
-          <p className="text-xs md:text-sm text-slate-500 mt-1">
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Monitor daily hydration and hit your recommended 2.5L daily target
           </p>
         </div>
 
         <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-2 bg-white px-3.5 py-2 rounded-xl border border-line shadow-sm text-xs font-semibold text-slate-700 font-mono">
+          <div className="flex items-center space-x-2 bg-white dark:bg-slate-800 px-3.5 py-2 rounded-xl border border-line dark:border-slate-700 shadow-sm text-xs font-semibold text-slate-700 dark:text-slate-200 font-mono">
             <CalendarIcon className="w-4 h-4 text-sky-600" />
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="bg-transparent focus:outline-none text-navy-900"
+              className="bg-transparent focus:outline-none text-navy-900 dark:text-slate-200"
             />
           </div>
 
@@ -115,17 +115,17 @@ const WaterIntake = () => {
       {/* Main Hydration Progress Card */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Progress & Circular Indicator */}
-        <div className="lg:col-span-2 bg-white rounded-[16px] p-6 border border-line shadow-sm flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm flex flex-col justify-between space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-3 text-center md:text-left">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider font-mono">Hydration Status</span>
+              <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider font-mono">Hydration Status</span>
               <div className="flex items-baseline justify-center md:justify-start space-x-2">
-                <span className="font-mono text-4xl md:text-5xl font-extrabold text-navy-900">
+                <span className="font-mono text-4xl md:text-5xl font-extrabold text-navy-900 dark:text-slate-200">
                   {(totalAmount / 1000).toFixed(2)}
                 </span>
                 <span className="font-mono text-xl font-bold text-sky-600">/ {(goal / 1000).toFixed(1)} L</span>
               </div>
-              <p className="text-xs font-medium text-slate-500">
+              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
                 {remaining > 0
                   ? `You have ${remaining} ml remaining to reach your daily hydration goal.`
                   : '🎉 Congratulations! You met your 2.5L daily hydration target!'}
@@ -153,15 +153,15 @@ const WaterIntake = () => {
                 />
               </svg>
               <div className="absolute flex flex-col items-center justify-center">
-                <span className="font-mono text-2xl font-black text-navy-900">{percentage}%</span>
+                <span className="font-mono text-2xl font-black text-navy-900 dark:text-slate-200">{percentage}%</span>
                 <span className="font-mono text-[10px] text-slate-400 font-semibold uppercase">Goal</span>
               </div>
             </div>
           </div>
 
           {/* Quick Buttons Grid */}
-          <div className="space-y-2 pt-4 border-t border-line">
-            <h4 className="text-xs font-bold text-slate-700 uppercase font-mono">Quick Hydration Buttons</h4>
+          <div className="space-y-2 pt-4 border-t border-line dark:border-slate-700">
+            <h4 className="text-xs font-bold text-slate-700 dark:text-slate-200 uppercase font-mono">Quick Hydration Buttons</h4>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[
                 { label: '+250 ml', val: 250, desc: 'Small Glass' },
@@ -183,10 +183,10 @@ const WaterIntake = () => {
         </div>
 
         {/* Today's History Panel */}
-        <div className="bg-white rounded-[16px] p-6 border border-line shadow-sm flex flex-col justify-between">
+        <div className="bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm flex flex-col justify-between">
           <div className="space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-line">
-              <h3 className="font-sora font-bold text-navy-900 text-base">Intake History</h3>
+            <div className="flex items-center justify-between pb-3 border-b border-line dark:border-slate-700">
+              <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base">Intake History</h3>
               <span className="font-mono text-xs font-semibold text-slate-400">({logs.length} logs)</span>
             </div>
 
@@ -197,14 +197,14 @@ const WaterIntake = () => {
                 {logs.map((log) => (
                   <div
                     key={log._id}
-                    className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] border border-line hover:bg-slate-100/60 transition-colors"
+                    className="flex items-center justify-between p-3 rounded-xl bg-white/80 dark:bg-slate-900/50 border border-white/80 dark:border-white/10 shadow-inner hover:bg-slate-100/60 transition-colors"
                   >
                     <div className="flex items-center space-x-3">
                       <div className="p-2 rounded-lg bg-sky-100 text-sky-600">
                         <GlassWater className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="font-mono font-bold text-sm text-navy-900">+{log.amount} ml</p>
+                        <p className="font-mono font-bold text-sm text-navy-900 dark:text-slate-200">+{log.amount} ml</p>
                         <p className="font-mono text-[10px] text-slate-400 font-medium">{formatTime(log.createdAt)}</p>
                       </div>
                     </div>
@@ -220,13 +220,13 @@ const WaterIntake = () => {
                 ))}
               </div>
             ) : (
-              <div className="py-12 text-center text-xs text-slate-400 border border-dashed border-line rounded-xl bg-[#FAFAF8]">
+              <div className="py-12 text-center text-xs text-slate-400 border border-dashed border-line dark:border-slate-700 rounded-xl bg-[#FAFAF8] dark:bg-slate-900">
                 No hydration records logged for this date.
               </div>
             )}
           </div>
 
-          <div className="pt-4 border-t border-line text-center">
+          <div className="pt-4 border-t border-line dark:border-slate-700 text-center">
             <span className="text-xs text-slate-400 font-mono">Daily Recommended Goal: 2,500 ml</span>
           </div>
         </div>
@@ -236,7 +236,7 @@ const WaterIntake = () => {
       <Modal isOpen={customModalOpen} onClose={() => setCustomModalOpen(false)} title="Custom Water Entry">
         <form onSubmit={handleCustomSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase mb-1 font-mono">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase mb-1 font-mono">
               Water Amount (milliliters)
             </label>
             <input
@@ -247,18 +247,18 @@ const WaterIntake = () => {
               value={customAmount}
               onChange={(e) => setCustomAmount(e.target.value)}
               placeholder="e.g. 350"
-              className="w-full px-4 py-3 rounded-xl border border-line focus:ring-2 focus:ring-sky-500 text-sm bg-[#FAFAF8]"
+              className="w-full px-4 py-3 rounded-xl border border-line dark:border-slate-700 focus:ring-2 focus:ring-sky-500 text-sm bg-[#FAFAF8] dark:bg-slate-900"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase mb-1 font-mono">Date</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase mb-1 font-mono">Date</label>
             <input
               type="date"
               required
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-line focus:ring-2 focus:ring-sky-500 text-sm bg-[#FAFAF8]"
+              className="w-full px-4 py-3 rounded-xl border border-line dark:border-slate-700 focus:ring-2 focus:ring-sky-500 text-sm bg-[#FAFAF8] dark:bg-slate-900"
             />
           </div>
 

@@ -4,7 +4,8 @@ const weightRecordSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
+    index: true
   },
   weight: {
     type: Number, // in kg
@@ -21,5 +22,8 @@ const weightRecordSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+// Compound index for fast queries by user and date
+weightRecordSchema.index({ userId: 1, date: -1 });
 
 module.exports = mongoose.model('WeightRecord', weightRecordSchema);

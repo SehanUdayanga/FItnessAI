@@ -89,13 +89,13 @@ const WeightTracker = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 flex items-center space-x-2.5">
+          <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 dark:text-slate-200 flex items-center space-x-2.5">
             <div className="p-2 rounded-[10px] bg-green-100 text-green-700">
               <Scale className="w-6 h-6" />
             </div>
             <span>Weight Tracker</span>
           </h1>
-          <p className="text-xs md:text-sm text-slate-500 mt-1">
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Log your body weight updates and track progress toward your target weight
           </p>
         </div>
@@ -150,18 +150,18 @@ const WeightTracker = () => {
       </div>
 
       {/* Goal Progress Banner */}
-      <div className="bg-white rounded-[16px] p-6 border border-line shadow-sm space-y-3">
+      <div className="bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Award className="w-5 h-5 text-green-700" />
-            <h3 className="font-sora font-bold text-navy-900 text-sm">Progress toward Target Weight ({targetWeight} kg)</h3>
+            <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-sm">Progress toward Target Weight ({targetWeight} kg)</h3>
           </div>
           <span className="font-mono text-xs font-bold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
             {targetProgressPercent}% Completed
           </span>
         </div>
 
-        <div className="w-full bg-[#FAFAF8] border border-line rounded-full h-3 overflow-hidden">
+        <div className="w-full bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 rounded-full h-3 overflow-hidden">
           <div
             className="bg-green-600 h-full transition-all duration-500 rounded-full"
             style={{ width: `${targetProgressPercent}%` }}
@@ -172,10 +172,10 @@ const WeightTracker = () => {
       {/* Chart & History Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Line Chart */}
-        <div className="lg:col-span-2 bg-white rounded-[16px] p-6 border border-line shadow-sm space-y-4">
+        <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm space-y-4">
           <div>
-            <h3 className="font-sora font-bold text-navy-900 text-base">Weight History Trend Chart</h3>
-            <p className="text-xs text-slate-500">Visual progress graph over time</p>
+            <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base">Weight History Trend Chart</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Visual progress graph over time</p>
           </div>
 
           <div className="h-72 w-full pt-4">
@@ -211,10 +211,10 @@ const WeightTracker = () => {
         </div>
 
         {/* History Table */}
-        <div className="bg-white rounded-[16px] p-6 border border-line shadow-sm flex flex-col justify-between space-y-4">
+        <div className="bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm flex flex-col justify-between space-y-4">
           <div>
-            <div className="flex items-center justify-between pb-3 border-b border-line">
-              <h3 className="font-sora font-bold text-navy-900 text-base">Weight Log History</h3>
+            <div className="flex items-center justify-between pb-3 border-b border-line dark:border-slate-700">
+              <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base">Weight Log History</h3>
               <span className="font-mono text-xs font-semibold text-slate-400">({weightRecords.length} entries)</span>
             </div>
 
@@ -223,10 +223,10 @@ const WeightTracker = () => {
                 {[...weightRecords].reverse().map((record) => (
                   <div
                     key={record._id}
-                    className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] border border-line hover:bg-slate-100/70 transition-colors"
+                    className="flex items-center justify-between p-3 rounded-xl bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 hover:bg-slate-100/70 transition-colors"
                   >
                     <div>
-                      <span className="font-mono font-bold text-sm text-navy-900">{record.weight} kg</span>
+                      <span className="font-mono font-bold text-sm text-navy-900 dark:text-slate-200">{record.weight} kg</span>
                       <p className="font-mono text-[11px] text-slate-400 font-medium">{record.date}</p>
                     </div>
 
@@ -241,7 +241,7 @@ const WeightTracker = () => {
                 ))}
               </div>
             ) : (
-              <div className="py-12 text-center text-xs text-slate-400 border border-dashed border-line rounded-xl mt-3 bg-[#FAFAF8]">
+              <div className="py-12 text-center text-xs text-slate-400 border border-dashed border-line dark:border-slate-700 rounded-xl mt-3 bg-[#FAFAF8] dark:bg-slate-900">
                 No weight entries logged yet.
               </div>
             )}
@@ -253,7 +253,7 @@ const WeightTracker = () => {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Log Weight Entry">
         <form onSubmit={handleAddWeight} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase mb-1 font-mono">Body Weight (kg)</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase mb-1 font-mono">Body Weight (kg)</label>
             <input
               type="number"
               step="0.1"
@@ -263,18 +263,18 @@ const WeightTracker = () => {
               value={weightInput}
               onChange={(e) => setWeightInput(e.target.value)}
               placeholder="e.g. 70.5"
-              className="w-full px-4 py-3 rounded-xl border border-line focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8]"
+              className="w-full px-4 py-3 rounded-xl border border-line dark:border-slate-700 focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8] dark:bg-slate-900"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase mb-1 font-mono">Date</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase mb-1 font-mono">Date</label>
             <input
               type="date"
               required
               value={dateInput}
               onChange={(e) => setDateInput(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-line focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8]"
+              className="w-full px-4 py-3 rounded-xl border border-line dark:border-slate-700 focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8] dark:bg-slate-900"
             />
           </div>
 

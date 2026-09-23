@@ -46,15 +46,21 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] flex items-center justify-center p-4 selection:bg-green-100 selection:text-green-900">
-      <div className="w-full max-w-md bg-white rounded-[24px] shadow-lg border border-line p-8 space-y-6">
+    <div 
+      className="dark min-h-screen relative bg-cover bg-center flex items-center justify-center p-4 selection:bg-green-100 selection:text-green-900 dark:selection:bg-slate-800 dark:selection:text-slate-100"
+      style={{ backgroundImage: 'url("/login-bg.jpg")' }}
+    >
+      {/* Background Blur Overlay */}
+      <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-md z-0"></div>
+
+      <div className="relative z-10 w-full max-w-md bg-slate-900/70 border border-slate-700/50 backdrop-blur-xl shadow-2xl rounded-3xl p-8 space-y-6">
         {/* Header Branding */}
         <div className="text-center space-y-2">
           <Link to="/" className="inline-flex items-center justify-center w-12 h-12 rounded-[12px] bg-green-700 text-white shadow-md shadow-green-700/20 mb-2 hover:bg-green-600 transition-colors">
             <Activity className="w-6 h-6" />
           </Link>
-          <h1 className="font-sora text-2xl font-bold text-navy-900 tracking-tight">Create your Account</h1>
-          <p className="text-sm text-slate-500">Join FitTrack to begin monitoring your wellness</p>
+          <h1 className="font-sora text-2xl font-bold text-navy-900 dark:text-slate-200 tracking-tight">Create your Account</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400">Join FitTrack to begin monitoring your wellness</p>
         </div>
 
         {/* Error Alert */}
@@ -68,7 +74,7 @@ const Register = () => {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5 font-mono">
               Full Name
             </label>
             <div className="relative">
@@ -81,13 +87,13 @@ const Register = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="John Doe"
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent text-sm bg-[#FAFAF8] text-navy-900"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-white/80 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm bg-white/80 dark:bg-slate-900/50 shadow-inner text-navy-900 dark:text-slate-200 transition-all duration-300"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5 font-mono">
               Email Address
             </label>
             <div className="relative">
@@ -100,13 +106,13 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="john@example.com"
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent text-sm bg-[#FAFAF8] text-navy-900"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-white/80 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm bg-white/80 dark:bg-slate-900/50 shadow-inner text-navy-900 dark:text-slate-200 transition-all duration-300"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5 font-mono">
               Password
             </label>
             <div className="relative">
@@ -119,13 +125,13 @@ const Register = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent text-sm bg-[#FAFAF8] text-navy-900"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-white/80 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm bg-white/80 dark:bg-slate-900/50 shadow-inner text-navy-900 dark:text-slate-200 transition-all duration-300"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5 font-mono">
               Confirm Password
             </label>
             <div className="relative">
@@ -138,7 +144,7 @@ const Register = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-line focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent text-sm bg-[#FAFAF8] text-navy-900"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-white/80 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm bg-white/80 dark:bg-slate-900/50 shadow-inner text-navy-900 dark:text-slate-200 transition-all duration-300"
               />
             </div>
           </div>
@@ -160,7 +166,7 @@ const Register = () => {
         </form>
 
         {/* Footer Link */}
-        <div className="text-center text-sm text-slate-500 pt-2 border-t border-line">
+        <div className="text-center text-sm text-slate-500 dark:text-slate-400 pt-2 border-t border-line dark:border-slate-700">
           Already have an account?{' '}
           <Link to="/login" className="font-bold text-green-700 hover:underline">
             Sign In

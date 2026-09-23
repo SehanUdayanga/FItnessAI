@@ -37,11 +37,11 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-slate-700 font-inter selection:bg-green-100 selection:text-green-900">
+    <div className="min-h-screen bg-[#FAFAF8] dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-inter selection:bg-green-100 selection:text-green-900">
       {/* ===== STICKY NAVBAR ===== */}
-      <nav className="sticky top-0 z-50 bg-[#FAFAF8]/90 backdrop-blur-md border-b border-line">
+      <nav className="sticky top-0 z-50 bg-[#FAFAF8] dark:bg-slate-900/90 backdrop-blur-md border-b border-line dark:border-slate-700">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5 font-sora font-bold text-lg text-navy-900 tracking-tight">
+          <Link to="/" className="flex items-center gap-2.5 font-sora font-bold text-lg text-navy-900 dark:text-slate-200 tracking-tight">
             <div className="w-8 h-8 rounded-[9px] bg-green-700 flex items-center justify-center text-white shadow-sm flex-shrink-0">
               <Activity className="w-4 h-4" />
             </div>
@@ -49,18 +49,18 @@ const LandingPage = () => {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-9 text-[14.5px] font-medium text-slate-700">
-            <a href="#home" className="hover:text-navy-900 transition-colors">Home</a>
-            <a href="#features" className="hover:text-navy-900 transition-colors">Features</a>
-            <a href="#how-it-works" className="hover:text-navy-900 transition-colors">How It Works</a>
-            <a href="#about" className="hover:text-navy-900 transition-colors">About</a>
+          <div className="hidden md:flex items-center gap-9 text-[14.5px] font-medium text-slate-700 dark:text-slate-200">
+            <a href="#home" className="hover:text-navy-900 dark:text-slate-200 transition-colors">Home</a>
+            <a href="#features" className="hover:text-navy-900 dark:text-slate-200 transition-colors">Features</a>
+            <a href="#how-it-works" className="hover:text-navy-900 dark:text-slate-200 transition-colors">How It Works</a>
+            <a href="#about" className="hover:text-navy-900 dark:text-slate-200 transition-colors">About</a>
           </div>
 
           {/* Nav Actions */}
           <div className="flex items-center gap-4 sm:gap-6">
             <Link
               to="/login"
-              className="text-[14.5px] font-semibold text-navy-900 hover:text-green-700 transition-colors"
+              className="text-[14.5px] font-semibold text-navy-900 dark:text-slate-200 hover:text-green-700 transition-colors"
             >
               Login
             </Link>
@@ -88,11 +88,11 @@ const LandingPage = () => {
                 AI-Powered Health Platform
               </div>
 
-              <h1 className="font-sora text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-navy-900 leading-[1.1] mb-6">
+              <h1 className="font-sora text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-navy-900 dark:text-slate-200 leading-[1.1] mb-6">
                 Your Health. Your Progress. <span className="text-green-700">Your FitTrack.</span>
               </h1>
 
-              <p className="text-slate-500 text-base sm:text-lg leading-relaxed max-w-lg mb-8">
+              <p className="text-slate-500 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-lg mb-8">
                 Track your fitness, nutrition, water intake and health progress in one intelligent platform.
               </p>
 
@@ -105,14 +105,14 @@ const LandingPage = () => {
                 </Link>
                 <a
                   href="#features"
-                  className="inline-flex items-center justify-center font-sora font-semibold text-[15px] px-7 py-3.5 rounded-full bg-transparent text-navy-900 border-[1.5px] border-line hover:border-navy-900 transition-all transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center font-sora font-semibold text-[15px] px-7 py-3.5 rounded-full bg-transparent text-navy-900 dark:text-slate-200 border-[1.5px] border-line dark:border-slate-700 hover:border-navy-900 transition-all transform hover:-translate-y-0.5"
                 >
                   Explore Features
                 </a>
               </div>
 
               {/* Social Proof */}
-              <div className="flex items-center gap-3.5 text-xs sm:text-sm text-slate-500">
+              <div className="flex items-center gap-3.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                 <div className="flex -space-x-2.5">
                   <div className="w-7 h-7 rounded-full border-2 border-white bg-gradient-to-tr from-green-400 to-green-700" />
                   <div className="w-7 h-7 rounded-full border-2 border-white bg-gradient-to-tr from-teal-400 to-emerald-700" />
@@ -124,14 +124,14 @@ const LandingPage = () => {
             </div>
 
             {/* Right Column: Interactive Dashboard Preview */}
-            <div className="bg-white rounded-[24px] border border-line p-5 shadow-lg relative">
-              <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-line px-1">
+            <div className="bg-white dark:bg-slate-800 rounded-[24px] border border-line dark:border-slate-700 p-5 shadow-lg relative">
+              <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-line dark:border-slate-700 px-1">
                 <div className="flex gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
                 </div>
-                <div className="font-mono text-[11px] font-semibold text-slate-500 tracking-wider">
+                <div className="font-mono text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider">
                   FITTRACK / DASHBOARD
                 </div>
                 <div className="w-10" />
@@ -139,10 +139,10 @@ const LandingPage = () => {
 
               {/* 4 Mini Cards */}
               <div className="grid grid-cols-2 gap-3 mb-3">
-                <div className="bg-green-050 border border-line rounded-[14px] p-3.5 sm:p-4">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">BMI</div>
-                  <div className="font-mono text-2xl font-bold text-navy-900 my-1">22.4</div>
-                  <div className="text-[11.5px] text-slate-500">Normal range</div>
+                <div className="bg-green-050 dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[14px] p-3.5 sm:p-4">
+                  <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">BMI</div>
+                  <div className="font-mono text-2xl font-bold text-navy-900 dark:text-slate-200 my-1">22.4</div>
+                  <div className="text-[11.5px] text-slate-500 dark:text-slate-400">Normal range</div>
                 </div>
 
                 <div className="bg-navy-900 border border-navy-900 rounded-[14px] p-3.5 sm:p-4 text-white">
@@ -151,29 +151,29 @@ const LandingPage = () => {
                   <div className="text-[11.5px] text-[#A7B4AC]">−1.3 kg this month</div>
                 </div>
 
-                <div className="bg-green-050 border border-line rounded-[14px] p-3.5 sm:p-4">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Water Intake</div>
+                <div className="bg-green-050 dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[14px] p-3.5 sm:p-4">
+                  <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Water Intake</div>
                   <div className="flex items-center gap-3 mt-2">
                     <div className="relative w-11 h-11 rounded-full flex items-center justify-center bg-[conic-gradient(#278B62_74%,#E3E9E4_0)]">
-                      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                        <span className="font-mono text-[10px] font-bold text-navy-900">74%</span>
+                      <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center">
+                        <span className="font-mono text-[10px] font-bold text-navy-900 dark:text-slate-200">74%</span>
                       </div>
                     </div>
-                    <div className="text-[11.5px] text-slate-500 font-medium">1.8 / 2.4 L</div>
+                    <div className="text-[11.5px] text-slate-500 dark:text-slate-400 font-medium">1.8 / 2.4 L</div>
                   </div>
                 </div>
 
-                <div className="bg-green-050 border border-line rounded-[14px] p-3.5 sm:p-4">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Calories</div>
-                  <div className="font-mono text-2xl font-bold text-navy-900 my-1">1,860</div>
-                  <div className="text-[11.5px] text-slate-500">Goal 2,100 kcal</div>
+                <div className="bg-green-050 dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[14px] p-3.5 sm:p-4">
+                  <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Calories</div>
+                  <div className="font-mono text-2xl font-bold text-navy-900 dark:text-slate-200 my-1">1,860</div>
+                  <div className="text-[11.5px] text-slate-500 dark:text-slate-400">Goal 2,100 kcal</div>
                 </div>
               </div>
 
               {/* Progress Sparkline Card */}
-              <div className="bg-white border border-line rounded-[14px] p-4 mb-3">
+              <div className="bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[14px] p-4 mb-3">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-[11.5px] font-semibold text-slate-500 uppercase font-mono">Progress · Last 7 Days</span>
+                  <span className="text-[11.5px] font-semibold text-slate-500 dark:text-slate-400 uppercase font-mono">Progress · Last 7 Days</span>
                   <span className="font-mono text-[11px] font-semibold bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full">+4.2%</span>
                 </div>
                 <div className="w-full h-16">
@@ -196,29 +196,29 @@ const LandingPage = () => {
               </div>
 
               {/* Today's Activity */}
-              <div className="bg-white border border-line rounded-[14px] p-4">
-                <div className="text-[11.5px] font-semibold text-slate-500 uppercase font-mono mb-2">Today's Activity</div>
+              <div className="bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[14px] p-4">
+                <div className="text-[11.5px] font-semibold text-slate-500 dark:text-slate-400 uppercase font-mono mb-2">Today's Activity</div>
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center text-xs pb-1.5 border-b border-line">
-                    <div className="flex items-center gap-2 font-medium text-navy-900">
+                  <div className="flex justify-between items-center text-xs pb-1.5 border-b border-line dark:border-slate-700">
+                    <div className="flex items-center gap-2 font-medium text-navy-900 dark:text-slate-200">
                       <span className="w-2 h-2 rounded-full bg-green-600" />
                       Morning Workout
                     </div>
-                    <span className="font-mono text-slate-500">32 min</span>
+                    <span className="font-mono text-slate-500 dark:text-slate-400">32 min</span>
                   </div>
-                  <div className="flex justify-between items-center text-xs pb-1.5 border-b border-line">
-                    <div className="flex items-center gap-2 font-medium text-navy-900">
+                  <div className="flex justify-between items-center text-xs pb-1.5 border-b border-line dark:border-slate-700">
+                    <div className="flex items-center gap-2 font-medium text-navy-900 dark:text-slate-200">
                       <span className="w-2 h-2 rounded-full bg-green-600" />
                       Strength Training
                     </div>
-                    <span className="font-mono text-slate-500">410 kcal</span>
+                    <span className="font-mono text-slate-500 dark:text-slate-400">410 kcal</span>
                   </div>
                   <div className="flex justify-between items-center text-xs">
-                    <div className="flex items-center gap-2 font-medium text-navy-900">
+                    <div className="flex items-center gap-2 font-medium text-navy-900 dark:text-slate-200">
                       <span className="w-2 h-2 rounded-full bg-green-600" />
                       Daily Steps
                     </div>
-                    <span className="font-mono text-slate-500">8,240</span>
+                    <span className="font-mono text-slate-500 dark:text-slate-400">8,240</span>
                   </div>
                 </div>
               </div>
@@ -228,54 +228,54 @@ const LandingPage = () => {
       </section>
 
       {/* ===== WHY FITTRACK SECTION ===== */}
-      <section className="py-24 bg-white border-y border-line">
+      <section className="py-24 bg-white dark:bg-slate-800 border-y border-line dark:border-slate-700">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-green-700 font-semibold mb-3">
               <span className="w-4 h-[1.5px] bg-green-600 inline-block" />
               Why FitTrack
             </div>
-            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
+            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 dark:text-slate-200 mb-4">
               One platform for your whole health picture
             </h2>
-            <p className="text-slate-500 text-base leading-relaxed">
+            <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
               FitTrack brings tracking, understanding and improvement together — so every number you log turns into a step forward.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
             {/* Card 01 */}
-            <div className="p-8 rounded-[20px] border border-line bg-[#FAFAF8] hover:bg-green-050 hover:border-green-400 transition-all duration-200 transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+            <div className="p-8 rounded-[20px] border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 hover:bg-green-050 dark:hover:bg-slate-800 hover:border-green-400 transition-all duration-200 transform hover:-translate-y-1 shadow-sm hover:shadow-md">
               <span className="font-mono text-xs font-bold text-green-700 mb-4 block">01</span>
               <div className="w-11 h-11 rounded-xl bg-navy-900 flex items-center justify-center mb-6 text-green-400">
                 <Activity className="w-5 h-5" />
               </div>
-              <h3 className="font-sora text-xl font-bold text-navy-900 mb-2">Track</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
+              <h3 className="font-sora text-xl font-bold text-navy-900 dark:text-slate-200 mb-2">Track</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                 Record daily fitness and health activities.
               </p>
             </div>
 
             {/* Card 02 */}
-            <div className="p-8 rounded-[20px] border border-line bg-[#FAFAF8] hover:bg-green-050 hover:border-green-400 transition-all duration-200 transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+            <div className="p-8 rounded-[20px] border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 hover:bg-green-050 dark:hover:bg-slate-800 hover:border-green-400 transition-all duration-200 transform hover:-translate-y-1 shadow-sm hover:shadow-md">
               <span className="font-mono text-xs font-bold text-green-700 mb-4 block">02</span>
               <div className="w-11 h-11 rounded-xl bg-navy-900 flex items-center justify-center mb-6 text-green-400">
                 <TrendingUp className="w-5 h-5" />
               </div>
-              <h3 className="font-sora text-xl font-bold text-navy-900 mb-2">Monitor</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
+              <h3 className="font-sora text-xl font-bold text-navy-900 dark:text-slate-200 mb-2">Monitor</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                 Understand health and progress through meaningful statistics.
               </p>
             </div>
 
             {/* Card 03 */}
-            <div className="p-8 rounded-[20px] border border-line bg-[#FAFAF8] hover:bg-green-050 hover:border-green-400 transition-all duration-200 transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+            <div className="p-8 rounded-[20px] border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 hover:bg-green-050 dark:hover:bg-slate-800 hover:border-green-400 transition-all duration-200 transform hover:-translate-y-1 shadow-sm hover:shadow-md">
               <span className="font-mono text-xs font-bold text-green-700 mb-4 block">03</span>
               <div className="w-11 h-11 rounded-xl bg-navy-900 flex items-center justify-center mb-6 text-green-400">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <h3 className="font-sora text-xl font-bold text-navy-900 mb-2">Improve</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
+              <h3 className="font-sora text-xl font-bold text-navy-900 dark:text-slate-200 mb-2">Improve</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                 Receive personalized recommendations and guidance.
               </p>
             </div>
@@ -291,63 +291,63 @@ const LandingPage = () => {
               <span className="w-4 h-[1.5px] bg-green-600 inline-block" />
               Features
             </div>
-            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
+            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 dark:text-slate-200 mb-4">
               Everything You Need in One Place
             </h2>
-            <p className="text-slate-500 text-base leading-relaxed">
+            <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
               From daily workouts to AI-guided recommendations, FitTrack keeps every part of your health journey connected.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Feature 1 */}
-            <div className="bg-white border border-line rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
+            <div className="bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
               <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center mb-5 text-green-700">
                 <Activity className="w-5 h-5" />
               </div>
-              <div className="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">FITNESS TRACKING</div>
-              <h4 className="font-sora text-lg font-bold text-navy-900 mb-2">Workouts &amp; Activity</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Track workouts and daily physical activities.</p>
+              <div className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">FITNESS TRACKING</div>
+              <h4 className="font-sora text-lg font-bold text-navy-900 dark:text-slate-200 mb-2">Workouts &amp; Activity</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Track workouts and daily physical activities.</p>
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-white border border-line rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
+            <div className="bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
               <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center mb-5 text-green-700">
                 <Utensils className="w-5 h-5" />
               </div>
-              <div className="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">MEAL TRACKING</div>
-              <h4 className="font-sora text-lg font-bold text-navy-900 mb-2">Nutrition Log</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Record meals and monitor nutrition.</p>
+              <div className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">MEAL TRACKING</div>
+              <h4 className="font-sora text-lg font-bold text-navy-900 dark:text-slate-200 mb-2">Nutrition Log</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Record meals and monitor nutrition.</p>
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-white border border-line rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
+            <div className="bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
               <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center mb-5 text-green-700">
                 <Droplets className="w-5 h-5" />
               </div>
-              <div className="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">WATER TRACKING</div>
-              <h4 className="font-sora text-lg font-bold text-navy-900 mb-2">Hydration</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Monitor daily hydration and water intake.</p>
+              <div className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">WATER TRACKING</div>
+              <h4 className="font-sora text-lg font-bold text-navy-900 dark:text-slate-200 mb-2">Hydration</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Monitor daily hydration and water intake.</p>
             </div>
 
             {/* Feature 4 */}
-            <div className="bg-white border border-line rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
+            <div className="bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
               <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center mb-5 text-green-700">
                 <Scale className="w-5 h-5" />
               </div>
-              <div className="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">HEALTH METRICS</div>
-              <h4 className="font-sora text-lg font-bold text-navy-900 mb-2">BMI &amp; Weight</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Monitor BMI, weight and important health metrics.</p>
+              <div className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">HEALTH METRICS</div>
+              <h4 className="font-sora text-lg font-bold text-navy-900 dark:text-slate-200 mb-2">BMI &amp; Weight</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Monitor BMI, weight and important health metrics.</p>
             </div>
 
             {/* Feature 5 */}
-            <div className="bg-white border border-line rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
+            <div className="bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] p-7 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-green-400">
               <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center mb-5 text-green-700">
                 <TrendingUp className="w-5 h-5" />
               </div>
-              <div className="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">PROGRESS TRACKING</div>
-              <h4 className="font-sora text-lg font-bold text-navy-900 mb-2">Analytics</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Visualize your fitness journey with charts and statistics.</p>
+              <div className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">PROGRESS TRACKING</div>
+              <h4 className="font-sora text-lg font-bold text-navy-900 dark:text-slate-200 mb-2">Analytics</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Visualize your fitness journey with charts and statistics.</p>
             </div>
 
             {/* Feature 6 (Highlighted AI Card) */}
@@ -365,17 +365,17 @@ const LandingPage = () => {
       </section>
 
       {/* ===== HOW IT WORKS SECTION ===== */}
-      <section id="how-it-works" className="py-24 bg-green-050 border-y border-line">
+      <section id="how-it-works" className="py-24 bg-green-050 dark:bg-slate-900 border-y border-line dark:border-slate-700">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-green-700 font-semibold mb-3">
               <span className="w-4 h-[1.5px] bg-green-600 inline-block" />
               How It Works
             </div>
-            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
+            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 dark:text-slate-200 mb-4">
               From sign-up to insight, in four steps
             </h2>
-            <p className="text-slate-500 text-base leading-relaxed">
+            <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
               Setting up FitTrack is quick — start tracking today and let the platform learn your patterns over time.
             </p>
           </div>
@@ -386,8 +386,8 @@ const LandingPage = () => {
               <div className="w-11 h-11 rounded-full bg-green-700 text-white font-mono font-bold text-sm flex items-center justify-center mb-5 shadow-sm">
                 01
               </div>
-              <h3 className="font-sora text-base font-bold text-navy-900 mb-2">Create Account</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Create your FitTrack account.</p>
+              <h3 className="font-sora text-base font-bold text-navy-900 dark:text-slate-200 mb-2">Create Account</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Create your FitTrack account.</p>
             </div>
 
             {/* Step 2 */}
@@ -395,8 +395,8 @@ const LandingPage = () => {
               <div className="w-11 h-11 rounded-full bg-green-700 text-white font-mono font-bold text-sm flex items-center justify-center mb-5 shadow-sm">
                 02
               </div>
-              <h3 className="font-sora text-base font-bold text-navy-900 mb-2">Set Your Profile</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Enter your health information and fitness goals.</p>
+              <h3 className="font-sora text-base font-bold text-navy-900 dark:text-slate-200 mb-2">Set Your Profile</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Enter your health information and fitness goals.</p>
             </div>
 
             {/* Step 3 */}
@@ -404,8 +404,8 @@ const LandingPage = () => {
               <div className="w-11 h-11 rounded-full bg-green-700 text-white font-mono font-bold text-sm flex items-center justify-center mb-5 shadow-sm">
                 03
               </div>
-              <h3 className="font-sora text-base font-bold text-navy-900 mb-2">Track Your Data</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Record workouts, meals, water and health information.</p>
+              <h3 className="font-sora text-base font-bold text-navy-900 dark:text-slate-200 mb-2">Track Your Data</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Record workouts, meals, water and health information.</p>
             </div>
 
             {/* Step 4 */}
@@ -413,25 +413,25 @@ const LandingPage = () => {
               <div className="w-11 h-11 rounded-full bg-green-700 text-white font-mono font-bold text-sm flex items-center justify-center mb-5 shadow-sm">
                 04
               </div>
-              <h3 className="font-sora text-base font-bold text-navy-900 mb-2">Get Personalized Insights</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Monitor progress and receive AI-powered recommendations.</p>
+              <h3 className="font-sora text-base font-bold text-navy-900 dark:text-slate-200 mb-2">Get Personalized Insights</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Monitor progress and receive AI-powered recommendations.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ===== PROGRESS / ANALYTICS PREVIEW ===== */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-slate-800">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-green-700 font-semibold mb-3">
               <span className="w-4 h-[1.5px] bg-green-600 inline-block" />
               Analytics
             </div>
-            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
+            <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 dark:text-slate-200 mb-4">
               Understand Your Progress
             </h2>
-            <p className="text-slate-500 text-base leading-relaxed">
+            <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
               Turn your daily health data into meaningful progress.
             </p>
           </div>
@@ -440,67 +440,67 @@ const LandingPage = () => {
             {/* Left Column: 4 Stat Cards */}
             <div className="lg:col-span-5 flex flex-col gap-4">
               {/* BMI */}
-              <div className="p-5 rounded-[14px] bg-[#FAFAF8] border border-line flex items-center gap-4 shadow-sm">
+              <div className="p-5 rounded-[14px] bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 flex items-center gap-4 shadow-sm">
                 <div className="relative w-14 h-14 rounded-full flex items-center justify-center bg-[conic-gradient(#278B62_68%,#E3E9E4_0)] flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] flex items-center justify-center">
-                    <span className="font-mono text-xs font-bold text-navy-900">22.4</span>
+                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] dark:bg-slate-900 flex items-center justify-center">
+                    <span className="font-mono text-xs font-bold text-navy-900 dark:text-slate-200">22.4</span>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-slate-500 mb-0.5">BMI Score</h4>
-                  <div className="font-mono text-lg font-bold text-navy-900">Normal</div>
+                  <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">BMI Score</h4>
+                  <div className="font-mono text-lg font-bold text-navy-900 dark:text-slate-200">Normal</div>
                 </div>
               </div>
 
               {/* Water */}
-              <div className="p-5 rounded-[14px] bg-[#FAFAF8] border border-line flex items-center gap-4 shadow-sm">
+              <div className="p-5 rounded-[14px] bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 flex items-center gap-4 shadow-sm">
                 <div className="relative w-14 h-14 rounded-full flex items-center justify-center bg-[conic-gradient(#4FAE85_74%,#E3E9E4_0)] flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] flex items-center justify-center">
-                    <span className="font-mono text-xs font-bold text-navy-900">74%</span>
+                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] dark:bg-slate-900 flex items-center justify-center">
+                    <span className="font-mono text-xs font-bold text-navy-900 dark:text-slate-200">74%</span>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-slate-500 mb-0.5">Water Intake</h4>
-                  <div className="font-mono text-lg font-bold text-navy-900">1.8 / 2.4 L</div>
+                  <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">Water Intake</h4>
+                  <div className="font-mono text-lg font-bold text-navy-900 dark:text-slate-200">1.8 / 2.4 L</div>
                 </div>
               </div>
 
               {/* Weekly Goal */}
-              <div className="p-5 rounded-[14px] bg-[#FAFAF8] border border-line flex items-center gap-4 shadow-sm">
+              <div className="p-5 rounded-[14px] bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 flex items-center gap-4 shadow-sm">
                 <div className="relative w-14 h-14 rounded-full flex items-center justify-center bg-[conic-gradient(#1F6F4F_88%,#E3E9E4_0)] flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] flex items-center justify-center">
-                    <span className="font-mono text-xs font-bold text-navy-900">88%</span>
+                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] dark:bg-slate-900 flex items-center justify-center">
+                    <span className="font-mono text-xs font-bold text-navy-900 dark:text-slate-200">88%</span>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-slate-500 mb-0.5">Weekly Goal</h4>
-                  <div className="font-mono text-lg font-bold text-navy-900">On Track</div>
+                  <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">Weekly Goal</h4>
+                  <div className="font-mono text-lg font-bold text-navy-900 dark:text-slate-200">On Track</div>
                 </div>
               </div>
 
               {/* Calories */}
-              <div className="p-5 rounded-[14px] bg-[#FAFAF8] border border-line flex items-center gap-4 shadow-sm">
+              <div className="p-5 rounded-[14px] bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 flex items-center gap-4 shadow-sm">
                 <div className="relative w-14 h-14 rounded-full flex items-center justify-center bg-[conic-gradient(#D98A3D_61%,#E3E9E4_0)] flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] flex items-center justify-center">
-                    <span className="font-mono text-xs font-bold text-navy-900">1.9k</span>
+                  <div className="w-10 h-10 rounded-full bg-[#FAFAF8] dark:bg-slate-900 flex items-center justify-center">
+                    <span className="font-mono text-xs font-bold text-navy-900 dark:text-slate-200">1.9k</span>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xs font-medium text-slate-500 mb-0.5">Calories Today</h4>
-                  <div className="font-mono text-lg font-bold text-navy-900">of 2,100 kcal</div>
+                  <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">Calories Today</h4>
+                  <div className="font-mono text-lg font-bold text-navy-900 dark:text-slate-200">of 2,100 kcal</div>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Weight Progress + Weekly Activity Chart */}
-            <div className="lg:col-span-7 bg-[#FAFAF8] border border-line rounded-[20px] p-6 sm:p-7 flex flex-col justify-between shadow-sm">
+            <div className="lg:col-span-7 bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 rounded-[20px] p-6 sm:p-7 flex flex-col justify-between shadow-sm">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="font-sora text-base sm:text-lg font-bold text-navy-900">Weight Progress</h3>
-                    <p className="text-xs text-slate-500 mt-0.5">Last 30 days · demo data</p>
+                    <h3 className="font-sora text-base sm:text-lg font-bold text-navy-900 dark:text-slate-200">Weight Progress</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Last 30 days · demo data</p>
                   </div>
-                  <div className="flex gap-4 text-xs font-medium text-slate-500">
+                  <div className="flex gap-4 text-xs font-medium text-slate-500 dark:text-slate-400">
                     <span className="inline-flex items-center gap-1.5">
                       <i className="w-2 h-2 rounded-full bg-green-600 inline-block" /> Actual
                     </span>
@@ -533,8 +533,8 @@ const LandingPage = () => {
               </div>
 
               {/* Weekly Activity Bars */}
-              <div className="pt-4 border-t border-line">
-                <div className="text-xs font-semibold text-slate-500 uppercase font-mono mb-3">Weekly Consistency</div>
+              <div className="pt-4 border-t border-line dark:border-slate-700">
+                <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase font-mono mb-3">Weekly Consistency</div>
                 <div className="flex items-end gap-3 sm:gap-4 h-24">
                   {[
                     { day: 'MON', h: '45%' },
@@ -550,7 +550,7 @@ const LandingPage = () => {
                         className="w-full max-w-[34px] rounded-t-lg bg-gradient-to-b from-green-400 to-green-700 transition-all duration-300"
                         style={{ height: bar.h }}
                       />
-                      <span className="font-mono text-[10px] text-slate-500">{bar.day}</span>
+                      <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400">{bar.day}</span>
                     </div>
                   ))}
                 </div>
@@ -577,9 +577,9 @@ const LandingPage = () => {
           </div>
 
           {/* Interactive Chat Shell Preview */}
-          <div className="max-w-2xl mx-auto bg-navy-800 border border-line-dark rounded-[20px] shadow-2xl overflow-hidden">
+          <div className="max-w-2xl mx-auto bg-navy-800 border border-line dark:border-slate-700-dark rounded-[20px] shadow-2xl overflow-hidden">
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-line-dark">
+            <div className="flex items-center justify-between p-5 border-b border-line dark:border-slate-700-dark">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-green-400 to-green-700 flex items-center justify-center text-white font-bold text-xs shadow-sm">
                   <Bot className="w-4 h-4" />
@@ -606,14 +606,14 @@ const LandingPage = () => {
 
               {/* AI Bubble */}
               <div className="flex justify-start">
-                <div className="max-w-[85%] bg-navy-700 text-[#E7EBEA] text-sm px-4 py-3 rounded-2xl rounded-tl-sm leading-relaxed border border-line-dark/60">
+                <div className="max-w-[85%] bg-navy-700 text-[#E7EBEA] text-sm px-4 py-3 rounded-2xl rounded-tl-sm leading-relaxed border border-line dark:border-slate-700-dark/60">
                   {interactiveMsg}
                 </div>
               </div>
             </div>
 
             {/* Interactive Prompt Pills */}
-            <div className="px-6 py-2.5 bg-navy-900/60 border-t border-line-dark flex flex-wrap gap-2">
+            <div className="px-6 py-2.5 bg-navy-900/60 border-t border-line dark:border-slate-700-dark flex flex-wrap gap-2">
               {Object.keys(sampleChats).map((prompt, idx) => (
                 <button
                   key={idx}
@@ -621,7 +621,7 @@ const LandingPage = () => {
                   className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                     activeQuestion === prompt
                       ? 'bg-green-700 text-white border-green-600'
-                      : 'bg-navy-700/80 text-[#AAB4BC] border-line-dark hover:text-white hover:border-green-400'
+                      : 'bg-navy-700/80 text-[#AAB4BC] border-line dark:border-slate-700-dark hover:text-white hover:border-green-400'
                   }`}
                 >
                   {prompt}
@@ -630,8 +630,8 @@ const LandingPage = () => {
             </div>
 
             {/* Input Bar Preview */}
-            <div className="p-4 border-t border-line-dark flex items-center gap-3">
-              <div className="flex-1 bg-navy-700 border border-line-dark rounded-full px-4 py-2.5 text-xs text-[#8792A0] font-inter">
+            <div className="p-4 border-t border-line dark:border-slate-700-dark flex items-center gap-3">
+              <div className="flex-1 bg-navy-700 border border-line dark:border-slate-700-dark rounded-full px-4 py-2.5 text-xs text-[#8792A0] font-inter">
                 Ask your AI Assistant...
               </div>
               <div className="w-9 h-9 rounded-full bg-green-700 flex items-center justify-center text-white shadow-sm flex-shrink-0 cursor-pointer hover:bg-green-600 transition-colors">
@@ -648,32 +648,32 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Floating Cards Mock */}
             <div className="relative h-[380px] hidden sm:block">
-              <div className="absolute top-0 left-4 bg-white border border-line rounded-[20px] shadow-md p-5 w-60 z-30 transform hover:scale-105 transition-transform">
-                <h5 className="font-sora font-semibold text-sm text-navy-900 flex items-center gap-2 mb-1">
+              <div className="absolute top-0 left-4 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] shadow-md p-5 w-60 z-30 transform hover:scale-105 transition-transform">
+                <h5 className="font-sora font-semibold text-sm text-navy-900 dark:text-slate-200 flex items-center gap-2 mb-1">
                   🏃 Fitness Tracking
                 </h5>
-                <p className="text-xs text-slate-500">Every workout, logged and visualized.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Every workout, logged and visualized.</p>
               </div>
 
-              <div className="absolute top-20 right-4 bg-white border border-line rounded-[20px] shadow-md p-5 w-60 z-20 transform hover:scale-105 transition-transform">
-                <h5 className="font-sora font-semibold text-sm text-navy-900 flex items-center gap-2 mb-1">
+              <div className="absolute top-20 right-4 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] shadow-md p-5 w-60 z-20 transform hover:scale-105 transition-transform">
+                <h5 className="font-sora font-semibold text-sm text-navy-900 dark:text-slate-200 flex items-center gap-2 mb-1">
                   🥗 Nutrition Tracking
                 </h5>
-                <p className="text-xs text-slate-500">Meals and macros made simple.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Meals and macros made simple.</p>
               </div>
 
-              <div className="absolute bottom-16 left-0 bg-white border border-line rounded-[20px] shadow-md p-5 w-60 z-10 transform hover:scale-105 transition-transform">
-                <h5 className="font-sora font-semibold text-sm text-navy-900 flex items-center gap-2 mb-1">
+              <div className="absolute bottom-16 left-0 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] shadow-md p-5 w-60 z-10 transform hover:scale-105 transition-transform">
+                <h5 className="font-sora font-semibold text-sm text-navy-900 dark:text-slate-200 flex items-center gap-2 mb-1">
                   ❤️ Health Monitoring
                 </h5>
-                <p className="text-xs text-slate-500">BMI, weight and vitals in view.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">BMI, weight and vitals in view.</p>
               </div>
 
-              <div className="absolute bottom-0 right-8 bg-white border border-line rounded-[20px] shadow-md p-5 w-60 z-40 transform hover:scale-105 transition-transform">
-                <h5 className="font-sora font-semibold text-sm text-navy-900 flex items-center gap-2 mb-1">
+              <div className="absolute bottom-0 right-8 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 rounded-[20px] shadow-md p-5 w-60 z-40 transform hover:scale-105 transition-transform">
+                <h5 className="font-sora font-semibold text-sm text-navy-900 dark:text-slate-200 flex items-center gap-2 mb-1">
                   🤖 AI Assistance
                 </h5>
-                <p className="text-xs text-slate-500">Guidance that adapts to you.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Guidance that adapts to you.</p>
               </div>
             </div>
 
@@ -684,7 +684,7 @@ const LandingPage = () => {
                 About FitTrack
               </div>
 
-              <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 mb-6 leading-tight">
+              <h2 className="font-sora text-3xl sm:text-4xl font-bold text-navy-900 dark:text-slate-200 mb-6 leading-tight">
                 One connected platform, every part of your health
               </h2>
 
@@ -696,7 +696,7 @@ const LandingPage = () => {
                   'Progress analytics',
                   'AI-powered assistance'
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3.5 py-3.5 text-[15px] font-medium text-navy-900">
+                  <li key={idx} className="flex items-center gap-3.5 py-3.5 text-[15px] font-medium text-navy-900 dark:text-slate-200">
                     <span className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 text-green-700">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </span>
@@ -730,44 +730,44 @@ const LandingPage = () => {
       </section>
 
       {/* ===== APPLICATION FLOW STRIP ===== */}
-      <section className="py-16 bg-[#FAFAF8] border-b border-line">
+      <section className="py-16 bg-[#FAFAF8] dark:bg-slate-900 border-b border-line dark:border-slate-700">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-green-700 font-semibold mb-2">
               Application Flow
             </div>
-            <h2 className="font-sora text-2xl font-bold text-navy-900">
+            <h2 className="font-sora text-2xl font-bold text-navy-900 dark:text-slate-200">
               From the home page into your dashboard
             </h2>
           </div>
 
           <div className="flex items-center justify-center flex-wrap gap-4 sm:gap-8">
             <div className="flex flex-col items-center gap-2">
-              <div className="w-14 h-14 rounded-2xl bg-white border-[1.5px] border-line flex items-center justify-center shadow-sm text-green-700">
+              <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 border-[1.5px] border-line dark:border-slate-700 flex items-center justify-center shadow-sm text-green-700">
                 <LayoutDashboard className="w-6 h-6" />
               </div>
-              <span className="font-mono text-xs font-bold text-navy-900 uppercase">Home</span>
-              <span className="text-[11.5px] text-slate-500">Public landing page</span>
+              <span className="font-mono text-xs font-bold text-navy-900 dark:text-slate-200 uppercase">Home</span>
+              <span className="text-[11.5px] text-slate-500 dark:text-slate-400">Public landing page</span>
             </div>
 
             <div className="w-8 h-[1.5px] bg-slate-300 hidden sm:block" />
 
             <div className="flex flex-col items-center gap-2">
-              <div className="w-14 h-14 rounded-2xl bg-white border-[1.5px] border-line flex items-center justify-center shadow-sm text-green-700">
+              <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 border-[1.5px] border-line dark:border-slate-700 flex items-center justify-center shadow-sm text-green-700">
                 <Lock className="w-6 h-6" />
               </div>
-              <span className="font-mono text-xs font-bold text-navy-900 uppercase">Login / Sign Up</span>
-              <span className="text-[11.5px] text-slate-500">Authenticate</span>
+              <span className="font-mono text-xs font-bold text-navy-900 dark:text-slate-200 uppercase">Login / Sign Up</span>
+              <span className="text-[11.5px] text-slate-500 dark:text-slate-400">Authenticate</span>
             </div>
 
             <div className="w-8 h-[1.5px] bg-slate-300 hidden sm:block" />
 
             <div className="flex flex-col items-center gap-2">
-              <div className="w-14 h-14 rounded-2xl bg-white border-[1.5px] border-line flex items-center justify-center shadow-sm text-green-700">
+              <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 border-[1.5px] border-line dark:border-slate-700 flex items-center justify-center shadow-sm text-green-700">
                 <Activity className="w-6 h-6" />
               </div>
-              <span className="font-mono text-xs font-bold text-navy-900 uppercase">Dashboard</span>
-              <span className="text-[11.5px] text-slate-500">Authenticated SPA</span>
+              <span className="font-mono text-xs font-bold text-navy-900 dark:text-slate-200 uppercase">Dashboard</span>
+              <span className="text-[11.5px] text-slate-500 dark:text-slate-400">Authenticated SPA</span>
             </div>
           </div>
         </div>
@@ -776,7 +776,7 @@ const LandingPage = () => {
       {/* ===== PROFESSIONAL FOOTER ===== */}
       <footer className="bg-navy-900 text-[#8792A0] pt-16 pb-10">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
-          <div className="flex flex-col md:flex-row justify-between items-start pb-12 border-b border-line-dark gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start pb-12 border-b border-line dark:border-slate-700-dark gap-8">
             <div>
               <div className="flex items-center gap-2.5 font-sora font-bold text-lg text-white mb-3">
                 <div className="w-7 h-7 rounded-[8px] bg-green-700 flex items-center justify-center text-white shadow-sm flex-shrink-0">

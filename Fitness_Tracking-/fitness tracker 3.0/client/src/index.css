@@ -31,14 +31,13 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  color: #3A4550;
-  background-color: #FAFAF8;
+  @apply text-[#3A4550] bg-[#FAFAF8] dark:bg-slate-950 dark:text-slate-200;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Sora', sans-serif;
-  color: #0F151C;
+  @apply text-[#0F151C] dark:text-slate-100;
   letter-spacing: -0.02em;
 }
 

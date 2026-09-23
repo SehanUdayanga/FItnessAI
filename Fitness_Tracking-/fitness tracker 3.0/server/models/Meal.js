@@ -4,7 +4,8 @@ const mealSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
+    index: true
   },
   mealType: {
     type: String,
@@ -25,6 +26,31 @@ const mealSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
+  foodId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Food',
+    default: null
+  },
+  quantityGrams: {
+    type: Number,
+    min: 0,
+    default: null
+  },
+  caloriesPer100g: {
+    type: Number,
+    min: 0,
+    default: null
+  },
+  totalCalories: {
+    type: Number,
+    min: 0,
+    default: null
+  },
+  source: {
+    type: String,
+    enum: ['manual', 'ai'],
+    default: 'manual'
+  },
   date: {
     type: String, // YYYY-MM-DD format
     required: true,
@@ -35,5 +61,8 @@ const mealSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+// Compound index for fast queries by user and date
+mealSchema.index({ userId: 1, date: -1 });
 
 module.exports = mongoose.model('Meal', mealSchema);

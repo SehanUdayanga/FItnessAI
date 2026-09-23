@@ -68,13 +68,13 @@ const BMICalculator = () => {
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Header */}
       <div>
-        <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 flex items-center space-x-2.5">
+        <h1 className="font-sora text-2xl md:text-3xl font-bold text-navy-900 dark:text-slate-200 flex items-center space-x-2.5">
           <div className="p-2 rounded-[10px] bg-green-100 text-green-700">
             <Calculator className="w-6 h-6" />
           </div>
           <span>BMI Calculator</span>
         </h1>
-        <p className="text-xs md:text-sm text-slate-500 mt-1">
+        <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">
           Calculate your Body Mass Index (BMI) based on your height and latest weight
         </p>
       </div>
@@ -82,13 +82,13 @@ const BMICalculator = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Form & Result Box */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-[16px] p-6 border border-line shadow-sm space-y-5">
-            <h3 className="font-sora font-bold text-navy-900 text-base">Calculate Body Mass Index</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm space-y-5">
+            <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base">Calculate Body Mass Index</h3>
 
             <form onSubmit={handleCalculate} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1 flex items-center space-x-1 font-mono">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase mb-1 flex items-center space-x-1 font-mono">
                     <Ruler className="w-3.5 h-3.5 text-slate-400" />
                     <span>Height (cm)</span>
                   </label>
@@ -100,12 +100,12 @@ const BMICalculator = () => {
                     value={height}
                     onChange={(e) => setHeight(e.target.value)}
                     placeholder="175"
-                    className="w-full px-4 py-3 rounded-xl border border-line focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8]"
+                    className="w-full px-4 py-3 rounded-xl border border-line dark:border-slate-700 focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8] dark:bg-slate-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1 flex items-center space-x-1 font-mono">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase mb-1 flex items-center space-x-1 font-mono">
                     <Scale className="w-3.5 h-3.5 text-slate-400" />
                     <span>Weight (kg)</span>
                   </label>
@@ -118,7 +118,7 @@ const BMICalculator = () => {
                     value={weight}
                     onChange={(e) => setWeight(e.target.value)}
                     placeholder="70"
-                    className="w-full px-4 py-3 rounded-xl border border-line focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8]"
+                    className="w-full px-4 py-3 rounded-xl border border-line dark:border-slate-700 focus:ring-2 focus:ring-green-600 text-sm bg-[#FAFAF8] dark:bg-slate-900"
                   />
                 </div>
               </div>
@@ -135,13 +135,13 @@ const BMICalculator = () => {
 
           {/* Active Result Card */}
           {result && (
-            <div className="bg-white rounded-[16px] p-6 border border-line shadow-sm space-y-4 animate-in fade-in duration-300">
+            <div className="bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm space-y-4 animate-in fade-in duration-300">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">Calculation Output</span>
 
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="font-mono text-4xl font-extrabold text-navy-900">{result.bmi}</div>
-                  <p className="text-xs text-slate-500 mt-0.5 font-medium">Calculated BMI Score</p>
+                  <div className="font-mono text-4xl font-extrabold text-navy-900 dark:text-slate-200">{result.bmi}</div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Calculated BMI Score</p>
                 </div>
 
                 <div className={`px-4 py-2 rounded-2xl border font-bold text-sm ${getCategoryColor(result.bmiCategory)}`}>
@@ -149,8 +149,8 @@ const BMICalculator = () => {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#FAFAF8] border border-line text-xs text-slate-600 space-y-1">
-                <p>Formula used: <span className="font-mono font-bold text-navy-900">BMI = Weight (kg) / Height (m)²</span></p>
+              <div className="p-4 rounded-xl bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700 text-xs text-slate-600 space-y-1">
+                <p>Formula used: <span className="font-mono font-bold text-navy-900 dark:text-slate-200">BMI = Weight (kg) / Height (m)²</span></p>
                 <p className="font-mono">Height: {result.height} cm | Weight: {result.weight} kg</p>
               </div>
             </div>
@@ -159,10 +159,10 @@ const BMICalculator = () => {
 
         {/* Right Reference Table */}
         <div className="space-y-6">
-          <div className="bg-white rounded-[16px] p-6 border border-line shadow-sm space-y-4">
+          <div className="bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm space-y-4">
             <div className="flex items-center space-x-2">
               <Info className="w-5 h-5 text-green-700" />
-              <h3 className="font-sora font-bold text-navy-900 text-base">BMI Categories Reference</h3>
+              <h3 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-base">BMI Categories Reference</h3>
             </div>
 
             <div className="space-y-2">
@@ -174,9 +174,9 @@ const BMICalculator = () => {
               ].map((item) => (
                 <div
                   key={item.category}
-                  className="flex items-center justify-between p-3 rounded-xl border border-line bg-[#FAFAF8] text-xs"
+                  className="flex items-center justify-between p-3 rounded-xl border border-line dark:border-slate-700 bg-[#FAFAF8] dark:bg-slate-900 text-xs"
                 >
-                  <span className="font-semibold text-slate-700 font-mono">{item.range}</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-200 font-mono">{item.range}</span>
                   <span className={`px-2.5 py-0.5 rounded-full font-bold font-mono text-[11px] ${item.color}`}>
                     {item.category}
                   </span>
@@ -186,10 +186,10 @@ const BMICalculator = () => {
           </div>
 
           {/* History Panel */}
-          <div className="bg-white rounded-[16px] p-6 border border-line shadow-sm space-y-3">
-            <div className="flex items-center justify-between border-b border-line pb-2">
-              <h4 className="font-sora font-bold text-navy-900 text-sm flex items-center space-x-1.5">
-                <History className="w-4 h-4 text-slate-500" />
+          <div className="bg-white dark:bg-slate-800 rounded-[16px] p-6 border border-line dark:border-slate-700 shadow-sm space-y-3">
+            <div className="flex items-center justify-between border-b border-line dark:border-slate-700 pb-2">
+              <h4 className="font-sora font-bold text-navy-900 dark:text-slate-200 text-sm flex items-center space-x-1.5">
+                <History className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                 <span>BMI History Log</span>
               </h4>
               <span className="font-mono text-xs text-slate-400">({history.length})</span>
@@ -198,8 +198,8 @@ const BMICalculator = () => {
             {history.length > 0 ? (
               <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
                 {[...history].reverse().map((item) => (
-                  <div key={item._id} className="flex items-center justify-between text-xs p-2.5 rounded-lg bg-[#FAFAF8] border border-line">
-                    <span className="font-mono font-bold text-navy-900">{item.bmi} ({item.bmiCategory})</span>
+                  <div key={item._id} className="flex items-center justify-between text-xs p-2.5 rounded-lg bg-[#FAFAF8] dark:bg-slate-900 border border-line dark:border-slate-700">
+                    <span className="font-mono font-bold text-navy-900 dark:text-slate-200">{item.bmi} ({item.bmiCategory})</span>
                     <span className="font-mono text-slate-400">{item.date}</span>
                   </div>
                 ))}

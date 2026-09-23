@@ -1,29 +1,30 @@
 const User = require('../models/User');
-const Profile = require('../models/Profile');
 const Meal = require('../models/Meal');
 const WaterIntake = require('../models/WaterIntake');
 const WeightRecord = require('../models/WeightRecord');
-const HealthMetric = require('../models/HealthMetric');
 
-// @desc    Get aggregated dashboard summary data (supports ?date=YYYY-MM-DD)
+// @desc    Get aggregated dashboard summary data calculated dynamically from the 4 collections
 // @route   GET /api/dashboard
 // @access  Private
 const getDashboardData = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user.id || req.user._id;
     const { date } = req.query;
     const targetDate = date || new Date().toISOString().split('T')[0];
 
-    // Get User & Profile
-    const user = await User.findById(userId).select('name email');
-    const profile = await Profile.findOne({ userId });
+    // 1. Get User Profile attributes directly from users collection
+    const user = await User.findById(userId).select('-password');
+    const height = user?.height || 170;
+    const targetWeight = user?.targetWeight || 65.0;
+    const waterGoal = user?.waterGoal || 2500;
+    const calorieGoal = 2100; // Standard daily reference or user goal
 
-    // Weight Data across history
+    // 2. Weight Data across history from weightrecords collection
     const allWeightRecords = await WeightRecord.find({ userId }).sort({ date: 1 });
     
     const startingWeight = allWeightRecords.length > 0
       ? allWeightRecords[0].weight
-      : (profile?.currentWeight || 72.0);
+      : targetWeight;
 
     // Find weight for the selected date, or closest on/before that date, or latest
     const recordsOnOrBefore = allWeightRecords.filter(r => r.date <= targetDate);
@@ -35,14 +36,12 @@ const getDashboardData = async (req, res) => {
           ? recordsOnOrBefore[recordsOnOrBefore.length - 1].weight
           : (allWeightRecords.length > 0
               ? allWeightRecords[allWeightRecords.length - 1].weight
-              : (profile?.currentWeight || 68.5)));
+              : targetWeight));
 
-    const targetWeight = profile?.targetWeight || 65.0;
     const toGo = parseFloat((currentWeight - targetWeight).toFixed(1));
     const weightChange = parseFloat((currentWeight - startingWeight).toFixed(1));
 
-    // Calculate BMI based on height
-    const height = profile?.height || 175;
+    // 3. Dynamic BMI Calculation
     const heightMeters = height / 100;
     const bmi = parseFloat((currentWeight / (heightMeters * heightMeters)).toFixed(1));
     
@@ -52,21 +51,19 @@ const getDashboardData = async (req, res) => {
     else if (bmi >= 25 && bmi <= 29.9) bmiCategory = 'Overweight';
     else if (bmi >= 30) bmiCategory = 'Obese';
 
-    // Meals for the target date
+    // 4. Meals for the target date from meals collection
     const targetMeals = await Meal.find({ userId, date: targetDate }).sort({ createdAt: 1 });
     const targetCalories = targetMeals.reduce((sum, meal) => sum + meal.calories, 0);
 
-    // Water logs for the target date
+    // 5. Water logs for the target date from waterintakes collection
     const targetWaterLogs = await WaterIntake.find({ userId, date: targetDate }).sort({ createdAt: 1 });
     const targetWater = targetWaterLogs.reduce((sum, log) => sum + log.amount, 0);
-    const waterGoal = profile?.waterGoal || 2500; // in ml (default 2.5 L)
-    const calorieGoal = profile?.calorieGoal || 2100; // in kcal (default 2,100 kcal)
 
     res.json({
       success: true,
       data: {
         date: targetDate,
-        userName: user ? user.name : 'Alex',
+        userName: user ? user.name : 'User',
         userEmail: user ? user.email : '',
         currentWeight,
         startingWeight,

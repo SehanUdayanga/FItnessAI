@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import {
   LayoutDashboard,
   Bot,
@@ -10,14 +11,18 @@ import {
   Menu,
   X,
   Calendar,
-  ChevronRight
+  ChevronRight,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const AdminLayout = () => {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const handleLogout = () => {
     logout();
@@ -125,9 +130,9 @@ const AdminLayout = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-slate-700 flex selection:bg-green-100 selection:text-green-900 font-inter">
+    <div className="min-h-screen bg-[#FAFAF8] dark:bg-slate-900 text-slate-700 dark:text-slate-300 flex selection:bg-green-100 selection:text-green-900 font-inter">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block fixed inset-y-0 left-0 z-30 w-72">
+      <aside className={`hidden lg:block fixed inset-y-0 left-0 z-30 w-72 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {sidebarContent}
       </aside>
 
@@ -149,30 +154,48 @@ const AdminLayout = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 lg:pl-72 flex flex-col min-h-screen">
+      <div className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ease-in-out ${isSidebarOpen ? 'lg:pl-72' : 'lg:pl-0'}`}>
         {/* Top Navigation Bar */}
-        <header className="sticky top-0 z-20 bg-[#FAFAF8]/90 backdrop-blur-md border-b border-line px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+        <header className="sticky top-0 z-20 bg-[#FAFAF8]/90 dark:bg-slate-900/95 backdrop-blur-md border-b border-line dark:border-slate-800 px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100"
+              className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-300"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className="hidden lg:block p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-300 transition-colors"
             >
               <Menu className="w-5 h-5" />
             </button>
             <div className="flex items-center space-x-2 text-xs text-slate-500 font-medium">
               <span className="hidden sm:inline">Admin Panel</span>
               <ChevronRight className="w-3.5 h-3.5 hidden sm:inline text-slate-400" />
-              <span className="font-sora font-semibold text-sm sm:text-base text-navy-900">
+              <span className="font-sora font-semibold text-sm sm:text-base text-navy-900 dark:text-slate-200">
                 {getPageTitle()}
               </span>
             </div>
           </div>
 
           <div className="flex items-center space-x-3">
-            <div className="hidden sm:flex items-center space-x-2 text-xs text-slate-600 bg-white border border-line px-3 py-1.5 rounded-full font-medium shadow-xs font-mono">
-              <Calendar className="w-3.5 h-3.5 text-green-700" />
+            <div className="hidden sm:flex items-center space-x-2 text-xs text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-line dark:border-slate-700 px-3 py-1.5 rounded-full font-medium shadow-xs font-mono">
+              <Calendar className="w-3.5 h-3.5 text-green-700 dark:text-green-400" />
               <span>{todayFormatted}</span>
             </div>
+
+            <button
+              onClick={toggleTheme}
+              className="p-1.5 sm:px-3 sm:py-1.5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent hover:border-line dark:hover:border-slate-700 rounded-lg transition-colors flex items-center space-x-1.5"
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </button>
 
             <button
               onClick={handleLogout}

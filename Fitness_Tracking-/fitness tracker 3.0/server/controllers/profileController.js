@@ -1,37 +1,65 @@
-const Profile = require('../models/Profile');
 const User = require('../models/User');
 const WeightRecord = require('../models/WeightRecord');
-const HealthMetric = require('../models/HealthMetric');
 
-// @desc    Get current user profile
+// Helper to calculate BMI and Category dynamically
+const calculateBMI = (weightKg, heightCm) => {
+  if (!weightKg || !heightCm || heightCm <= 0) return { bmi: 0, bmiCategory: 'Normal' };
+  const heightM = heightCm / 100;
+  const bmi = parseFloat((weightKg / (heightM * heightM)).toFixed(1));
+  let bmiCategory = 'Normal';
+  if (bmi < 18.5) bmiCategory = 'Underweight';
+  else if (bmi >= 18.5 && bmi <= 24.9) bmiCategory = 'Normal';
+  else if (bmi >= 25 && bmi <= 29.9) bmiCategory = 'Overweight';
+  else if (bmi >= 30) bmiCategory = 'Obese';
+  return { bmi, bmiCategory };
+};
+
+// @desc    Get current user profile & metrics
 // @route   GET /api/profile
 // @access  Private
 const getProfile = async (req, res) => {
   try {
-    let profile = await Profile.findOne({ userId: req.user.id });
+    const userId = req.user.id || req.user._id;
+    const user = await User.findById(userId).select('-password');
 
-    if (!profile) {
-      // Create a default profile if none exists yet
-      profile = await Profile.create({
-        userId: req.user.id,
-        age: 24,
-        gender: 'Male',
-        height: 175,
-        currentWeight: 70,
-        targetWeight: 65,
-        healthGoal: 'Maintain Weight'
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
       });
     }
 
-    const user = await User.findById(req.user.id).select('name email');
+    // Get latest weight record dynamically from weightrecords collection
+    const latestWeightDoc = await WeightRecord.findOne({ userId }).sort({ date: -1, createdAt: -1 });
+    const currentWeight = latestWeightDoc ? latestWeightDoc.weight : (user.targetWeight || 70);
+
+    // Calculate BMI dynamically
+    const { bmi, bmiCategory } = calculateBMI(currentWeight, user.height);
+
+    const responseData = {
+      _id: user._id,
+      userId: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      status: user.status,
+      age: user.age || 25,
+      gender: user.gender || 'Male',
+      height: user.height || 170,
+      currentWeight,
+      targetWeight: user.targetWeight || 65,
+      healthGoal: user.healthGoal || 'Maintain Weight',
+      waterGoal: user.waterGoal || 2500,
+      profileImage: user.profileImage || '',
+      bmi,
+      bmiCategory,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
+    };
 
     res.json({
       success: true,
-      data: {
-        ...profile.toObject(),
-        name: user ? user.name : '',
-        email: user ? user.email : ''
-      }
+      data: responseData
     });
   } catch (error) {
     console.error('Get profile error:', error);
@@ -42,94 +70,89 @@ const getProfile = async (req, res) => {
   }
 };
 
-// @desc    Update user profile
+// @desc    Update user profile & log weight record if weight provided
 // @route   PUT /api/profile
 // @access  Private
 const updateProfile = async (req, res) => {
   try {
+    const userId = req.user.id || req.user._id;
     const {
+      name,
       age,
       gender,
       height,
       currentWeight,
+      weight,
       targetWeight,
       healthGoal,
       waterGoal,
-      calorieGoal,
-      profileImage,
-      name
+      profileImage
     } = req.body;
 
-    // Update name on User model if provided
-    if (name) {
-      await User.findByIdAndUpdate(req.user.id, { name });
-    }
-
-    let profile = await Profile.findOne({ userId: req.user.id });
-
-    const updateFields = {
-      updatedAt: Date.now()
-    };
-
-    if (age !== undefined) updateFields.age = Number(age);
-    if (gender !== undefined) updateFields.gender = gender;
-    if (height !== undefined) updateFields.height = Number(height);
-    if (currentWeight !== undefined) updateFields.currentWeight = Number(currentWeight);
-    if (targetWeight !== undefined) updateFields.targetWeight = Number(targetWeight);
-    if (healthGoal !== undefined) updateFields.healthGoal = healthGoal;
-    if (waterGoal !== undefined) updateFields.waterGoal = Number(waterGoal);
-    if (calorieGoal !== undefined) updateFields.calorieGoal = Number(calorieGoal);
-    if (profileImage !== undefined) updateFields.profileImage = profileImage;
-
-    if (!profile) {
-      profile = await Profile.create({
-        userId: req.user.id,
-        ...updateFields
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
       });
-    } else {
-      profile = await Profile.findOneAndUpdate(
-        { userId: req.user.id },
-        { $set: updateFields },
-        { new: true }
-      );
     }
 
-    // If current weight & height are present, record a new WeightRecord and HealthMetric
-    if (currentWeight && height) {
+    // Update User fields
+    if (name) user.name = name.trim();
+    if (age !== undefined) user.age = Number(age);
+    if (gender !== undefined) user.gender = gender;
+    if (height !== undefined) user.height = Number(height);
+    if (targetWeight !== undefined) user.targetWeight = Number(targetWeight);
+    if (healthGoal !== undefined) user.healthGoal = healthGoal;
+    if (waterGoal !== undefined) user.waterGoal = Number(waterGoal);
+    if (profileImage !== undefined) user.profileImage = profileImage;
+    user.updatedAt = Date.now();
+
+    await user.save();
+
+    // If a new weight value is supplied, save to weightrecords collection
+    const weightToLog = currentWeight !== undefined ? currentWeight : weight;
+    if (weightToLog !== undefined && Number(weightToLog) > 0) {
       const todayStr = new Date().toISOString().split('T')[0];
       await WeightRecord.create({
-        userId: req.user.id,
-        weight: Number(currentWeight),
-        date: todayStr
-      });
-
-      const heightMeters = Number(height) / 100;
-      const bmi = parseFloat((Number(currentWeight) / (heightMeters * heightMeters)).toFixed(1));
-      let bmiCategory = 'Normal';
-      if (bmi < 18.5) bmiCategory = 'Underweight';
-      else if (bmi >= 18.5 && bmi <= 24.9) bmiCategory = 'Normal';
-      else if (bmi >= 25 && bmi <= 29.9) bmiCategory = 'Overweight';
-      else if (bmi >= 30) bmiCategory = 'Obese';
-
-      await HealthMetric.create({
-        userId: req.user.id,
-        weight: Number(currentWeight),
-        bmi,
-        bmiCategory,
+        userId,
+        weight: Number(weightToLog),
         date: todayStr
       });
     }
 
-    const updatedUser = await User.findById(req.user.id).select('name email');
+    // Fetch latest weight dynamically
+    const latestWeightDoc = await WeightRecord.findOne({ userId }).sort({ date: -1, createdAt: -1 });
+    const latestWeight = latestWeightDoc ? latestWeightDoc.weight : (user.targetWeight || 70);
+
+    // Dynamic BMI calculation
+    const { bmi, bmiCategory } = calculateBMI(latestWeight, user.height);
+
+    const updatedData = {
+      _id: user._id,
+      userId: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      status: user.status,
+      age: user.age,
+      gender: user.gender,
+      height: user.height,
+      currentWeight: latestWeight,
+      targetWeight: user.targetWeight,
+      healthGoal: user.healthGoal,
+      waterGoal: user.waterGoal,
+      profileImage: user.profileImage,
+      bmi,
+      bmiCategory,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
+    };
 
     res.json({
       success: true,
       message: 'Profile updated successfully',
-      data: {
-        ...profile.toObject(),
-        name: updatedUser ? updatedUser.name : '',
-        email: updatedUser ? updatedUser.email : ''
-      }
+      data: updatedData
     });
   } catch (error) {
     console.error('Update profile error:', error);

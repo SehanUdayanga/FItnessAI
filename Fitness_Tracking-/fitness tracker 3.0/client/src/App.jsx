@@ -1,30 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 
-// Layout
+// Layouts
 import MainLayout from './layouts/MainLayout';
+import AdminLayout from './layouts/AdminLayout';
 
-// Pages
+// User Pages
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProfileSetup from './pages/ProfileSetup';
 import Dashboard from './pages/Dashboard';
-import MealTracker from './pages/MealTracker';
 import WaterIntake from './pages/WaterIntake';
 import WeightTracker from './pages/WeightTracker';
 import BMICalculator from './pages/BMICalculator';
 import Progress from './pages/Progress';
 import Profile from './pages/Profile';
 import FitTrackAI from './pages/FitTrackAI';
-import AdminDashboard from './pages/AdminDashboard';
 
-// PWA Mobile Components
-import MobileInstallApp from './components/MobileInstallApp';
-import MobileNotificationHandler from './components/MobileNotificationHandler';
+// Admin Pages
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminAIMonitoring from './pages/admin/AdminAIMonitoring';
+import AdminProfile from './pages/admin/AdminProfile';
 
-// Protected Route Guard
+// Protected Route Guard for Normal Users
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
@@ -46,7 +47,7 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-// Admin Route Guard (Restricted to authenticated admin users)
+// Admin Route Guard (Requires JWT + role === 'ADMIN')
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
@@ -65,20 +66,23 @@ const AdminRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (user.role !== 'admin') {
+  if (user.role?.toLowerCase() !== 'admin') {
     return <Navigate to="/dashboard" replace />;
   }
 
   return children;
 };
 
-// Public Route Guard for Auth Pages (Redirects to dashboard if already logged in)
+// Public Route Guard for Auth Pages
 const PublicRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) return null;
 
   if (user) {
+    if (user.role?.toLowerCase() === 'admin') {
+      return <Navigate to="/admin/dashboard" replace />;
+    }
     return <Navigate to="/dashboard" replace />;
   }
 
@@ -127,7 +131,7 @@ function AppRoutes() {
         }
       />
 
-      {/* Main Authenticated Application Routes */}
+      {/* Main Authenticated Application Routes (User App) */}
       <Route
         element={
           <ProtectedRoute>
@@ -136,7 +140,7 @@ function AppRoutes() {
         }
       >
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/meals" element={<MealTracker />} />
+        <Route path="/meals" element={<Navigate to="/dashboard" replace />} />
         <Route path="/water" element={<WaterIntake />} />
         <Route path="/weight" element={<WeightTracker />} />
         <Route path="/bmi" element={<BMICalculator />} />
@@ -144,14 +148,21 @@ function AppRoutes() {
         <Route path="/progression" element={<Progress />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/ai-assistant" element={<FitTrackAI />} />
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <AdminDashboard />
-            </AdminRoute>
-          }
-        />
+      </Route>
+
+      {/* Admin Panel Routes */}
+      <Route
+        path="/admin"
+        element={
+          <AdminRoute>
+            <AdminLayout />
+          </AdminRoute>
+        }
+      >
+        <Route index element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="ai" element={<AdminAIMonitoring />} />
+        <Route path="profile" element={<AdminProfile />} />
       </Route>
 
       {/* Fallback 404 Route */}
@@ -162,15 +173,12 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <AppRoutes />
-        {/* Mobile-only PWA Installation Prompt / iOS Home Screen Guide */}
-        <MobileInstallApp />
-        {/* Mobile Notification Permissions & Welcome Notification Bar Handler */}
-        <MobileNotificationHandler />
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
-
