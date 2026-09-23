@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Bell, BellRing, X, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Bell, BellRing, X, Sparkles } from 'lucide-react';
 import {
   isNotificationSupported,
   getNotificationPermission,
   requestNotificationPermission,
   sendWelcomeNotification,
-  NOTIFICATION_STORAGE_KEY,
+  sendHomePageNotification,
+  startFitnessTipsScheduler,
   NOTIFICATION_PROMPT_SHOWN_KEY
 } from '../utils/notifications';
 
@@ -13,6 +15,8 @@ export default function MobileNotificationHandler() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [permissionState, setPermissionState] = useState('unsupported');
   const [isMobileDevice, setIsMobileDevice] = useState(false);
+  const location = useLocation();
+  const hasTriggeredOnHomeRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -35,37 +39,37 @@ export default function MobileNotificationHandler() {
     setPermissionState(currentPermission);
 
     // If permission is already granted:
-    // Check if welcome notification was sent yet on this device
     if (currentPermission === 'granted') {
-      const alreadySent = localStorage.getItem(NOTIFICATION_STORAGE_KEY);
-      if (!alreadySent) {
-        // Small delay to ensure service worker is active
+      // Start 2-minute fitness & workout tips interval (runs in foreground and background)
+      startFitnessTipsScheduler(120000);
+
+      // Trigger notification when opening the app through homepage
+      if (location.pathname === '/' && !hasTriggeredOnHomeRef.current) {
+        hasTriggeredOnHomeRef.current = true;
         setTimeout(() => {
           sendWelcomeNotification();
-        }, 1200);
+        }, 800);
       }
       return;
     }
 
-    // If permission is default (never asked or pending):
+    // If permission is default (prompt user):
     if (currentPermission === 'default') {
-      // Check if recently dismissed
       const lastDismissed = localStorage.getItem(NOTIFICATION_PROMPT_SHOWN_KEY);
       if (lastDismissed) {
         const days = (Date.now() - parseInt(lastDismissed, 10)) / (1000 * 60 * 60 * 24);
-        if (days < 3) {
+        if (days < 2) {
           return;
         }
       }
 
-      // Show the mobile permission request banner after a brief intro delay
       const timer = setTimeout(() => {
         setShowPrompt(true);
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [location.pathname]);
 
   const handleRequestPermission = async () => {
     try {
@@ -74,8 +78,10 @@ export default function MobileNotificationHandler() {
       setShowPrompt(false);
 
       if (result === 'granted') {
-        // Send welcome notification immediately upon user approval
+        // Send welcome notification immediately into notification bar
         await sendWelcomeNotification();
+        // Start 2-minute recurring fitness & workout tips
+        startFitnessTipsScheduler(120000);
       }
     } catch (err) {
       console.warn('[FitTrack Notification] Permission error:', err);
@@ -93,7 +99,7 @@ export default function MobileNotificationHandler() {
   }
 
   return (
-    <div className="fixed top-4 inset-x-3 sm:inset-x-auto sm:right-4 sm:top-4 z-50 max-w-sm mx-auto sm:mx-0 transition-all duration-300 animate-in fade-in slide-in-from-top-4">
+    <div className="fixed top-3 inset-x-3 sm:inset-x-auto sm:right-4 sm:top-4 z-50 max-w-sm mx-auto sm:mx-0 transition-all duration-300 animate-in fade-in slide-in-from-top-4">
       <div className="bg-white/95 backdrop-blur-md border border-line rounded-2xl shadow-xl p-4 text-slate-700">
         <div className="flex items-start gap-3">
           <div className="w-10 h-10 rounded-xl bg-green-700 flex-shrink-0 flex items-center justify-center text-white shadow-xs">
@@ -102,8 +108,9 @@ export default function MobileNotificationHandler() {
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between gap-1">
-              <h4 className="font-sora font-semibold text-sm text-navy-900 tracking-tight">
-                Enable Notifications
+              <h4 className="font-sora font-semibold text-sm text-navy-900 tracking-tight flex items-center gap-1.5">
+                <span>FitTrack Notifications</span>
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               </h4>
               <button
                 onClick={handleDismiss}
@@ -113,8 +120,8 @@ export default function MobileNotificationHandler() {
                 <X className="w-4 h-4" />
               </button>
             </div>
-            <p className="text-xs text-slate-500 mt-0.5 leading-snug">
-              Get your welcome alert and daily health reminders in your device notification bar.
+            <p className="text-xs text-slate-500 mt-1 leading-snug">
+              Allow notifications to receive your welcome alert and workout tips every 2 minutes right in your notification bar.
             </p>
 
             <div className="flex items-center gap-2 mt-3">
@@ -138,3 +145,4 @@ export default function MobileNotificationHandler() {
     </div>
   );
 }
+

@@ -124,3 +124,99 @@ self.addEventListener('notificationclick', (event) => {
   );
 });
 
+// 5. Fitness Tips Rotation (every 2 minutes)
+const FITNESS_TIPS = [
+  {
+    title: '💧 Hydration Check — FitTrack',
+    body: 'Time to drink a glass of water! Staying hydrated boosts workout endurance and recovery.'
+  },
+  {
+    title: '🧘 Quick Posture Reset — FitTrack',
+    body: 'Roll your shoulders back, straighten your spine, and take 3 slow, deep breaths.'
+  },
+  {
+    title: '🤸 2-Minute Workout Stretch — FitTrack',
+    body: 'Stand up and stretch your arms overhead, followed by 10 gentle torso twists.'
+  },
+  {
+    title: '🚶 Step Boost Alert — FitTrack',
+    body: 'Take a quick 1-2 minute walk around to increase blood flow and metabolism.'
+  },
+  {
+    title: '⚡ Quick Energy Booster — FitTrack',
+    body: 'Try 15 bodyweight squats or 20 jumping jacks to re-energize your body!'
+  },
+  {
+    title: '🥗 Nutrition Tip — FitTrack',
+    body: 'Fuel your fitness with balanced protein and healthy greens for optimal muscle tone.'
+  },
+  {
+    title: '🏋️ Core Engagement — FitTrack',
+    body: 'Gently brace your abdominal core for 20 seconds to strengthen your stabilizer muscles.'
+  }
+];
+
+let tipIndex = 0;
+let tipsTimerId = null;
+
+function sendNextFitnessTip() {
+  if (!self.registration || !self.registration.showNotification) return;
+
+  const tip = FITNESS_TIPS[tipIndex % FITNESS_TIPS.length];
+  tipIndex++;
+
+  self.registration.showNotification(tip.title, {
+    body: tip.body,
+    icon: '/icons/icon-192x192.png',
+    badge: '/icons/icon-192x192.png',
+    tag: 'fittrack-fitness-tip-' + Date.now(),
+    renotify: true,
+    vibrate: [150, 80, 150],
+    data: {
+      url: '/dashboard',
+      timestamp: Date.now()
+    }
+  });
+}
+
+function startBackgroundTipsTimer(intervalMs = 120000) {
+  if (tipsTimerId) {
+    clearInterval(tipsTimerId);
+  }
+  // Schedule every intervalMs (default 2 minutes = 120000ms)
+  tipsTimerId = setInterval(() => {
+    sendNextFitnessTip();
+  }, intervalMs);
+}
+
+// 6. Service Worker Message Listener (Communication from Frontend Client)
+self.addEventListener('message', (event) => {
+  const data = event.data;
+  if (!data) return;
+
+  if (data.type === 'START_TIPS_TIMER') {
+    const intervalMs = data.intervalMs || 120000;
+    startBackgroundTipsTimer(intervalMs);
+  } else if (data.type === 'STOP_TIPS_TIMER') {
+    if (tipsTimerId) {
+      clearInterval(tipsTimerId);
+      tipsTimerId = null;
+    }
+  } else if (data.type === 'SHOW_NOTIFICATION') {
+    if (self.registration && self.registration.showNotification) {
+      self.registration.showNotification(data.title || 'FitTrack Alert', {
+        body: data.body || 'Keep pushing towards your fitness goals today!',
+        icon: data.icon || '/icons/icon-192x192.png',
+        badge: data.badge || '/icons/icon-192x192.png',
+        tag: data.tag || 'fittrack-notification',
+        renotify: true,
+        vibrate: [100, 50, 100],
+        data: {
+          url: data.url || '/'
+        }
+      });
+    }
+  }
+});
+
+
